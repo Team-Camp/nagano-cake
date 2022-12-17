@@ -7,6 +7,18 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+get '/top' => 'homes#top'
+get '/about' => 'homes#about'
+
+
+scope module: :public do
+  get 'customers/mypage' => 'customers#show'
+  get 'customers/information/edit' => 'customers#edit'
+  get 'unsubscribe' => 'customers#unsubcribe'
+  patch 'customers/information' => 'customers#update'
+  patch 'withdraw' => 'customers#withdraw'
+end
+
 
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   # devise_for :customers
 # 顧客用
 # URL /customers/sign_in ...
@@ -8,8 +9,8 @@ Rails.application.routes.draw do
   }
 
 
-  devise_for :users
+  #devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-get '/top' => 'homes#top'
-get '/about' => 'homes#about'
+get '/top' => 'public/homes#top'
+get '/about' => 'public/homes#about'
 end

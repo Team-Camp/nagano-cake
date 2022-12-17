@@ -13,5 +13,6 @@ hamaoka.ryoi
 
   <body>
     <%= yield %>
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
   </body>
 </html>

@@ -1,41 +1,46 @@
 <h1>マイページ</h1>
 
 <p>登録情報</p>
-<p><%= link_to "編集する", class:"btn btn-sm btn-success" %></p>
+<p><%= link_to "編集する","/customers/information/edit", class:"btn btn-sm btn-success" %></p>
 
 <table border="1">
   <tr>
     <th>氏名</th>
     <th></th>
-  </tr>
-  <tr>
-    <td>カナ</td>
-    <td><%=  %></td>
-  </tr>
-  <tr>
-    <td>郵便番号</td>
-    <td><%=  %></td>
-  </tr>
-  <tr>
-    <td>住所</td>
-    <td><%=  %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><%=  %></td>
     <!--姓と名　customer.last_name, customer.first_name-->
     <!--これを入れるとスペースを作れる　&emsp;-->
   </tr>
   <tr>
+    <td>カナ</td>
+    <td><%=  %></td>
+    <!--customer.last_name_kana,customer.first_name_kana-->
+  </tr>
+  <tr>
+    <td>郵便番号</td>
+    <td><%=  %></td>
+    <!--customer.postal_code-->
+  </tr>
+  <tr>
+    <td>住所</td>
+    <td><%=  %></td>
+    <!--customer.address-->
+  </tr>
+  <tr>
+    <td>電話番号</td>
+    <td><%=  %></td>
+    <!--customer.telephone_number        -->
+  </tr>
+  <tr>
     <td>メールアドレス</td>
     <td><%=  %></td>
+    <!--customer.postal_code-->
   </tr>
 </table>
 
 
 <p>配送先</p>
-<p><%= link_to "一覧を見る", class:"btn btn-sm btn-success" %></p>
+<p><%= link_to "一覧を見る","/addresses", class:"btn btn-sm btn-success" %></p>
 
 
 <p>注文履歴</p>
-<p><%= link_to "一覧をみる", class:"btn btn-sm btn-success" %></p>
+<p><%= link_to "一覧をみる", "/orders", class:"btn btn-sm btn-success" %></p>

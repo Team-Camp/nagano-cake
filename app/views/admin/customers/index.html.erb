@@ -7,12 +7,13 @@
   </ul>
 <%# end %>
 
-<%#顧客情報が入り次第、再度>
 <main>
   <div class="container px-5 px-sm-0">
    <div class="row">
    <div class="col-md-3">
    <h2>会員一覧</h2>
+
+   <td><%= @admin_customers.each do |admin_customer| %></td>
    <table class="table">
     <tbody>
      <tr></tr>
@@ -34,3 +35,5 @@
      </tr>
     </tbody>
    </table>
+   <% end %>
+   <%= paginate @admin_customers %>

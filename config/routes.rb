@@ -23,6 +23,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch 'customers/information' => 'customers#update'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
   end
+  
+  
+  namespace :public do
+    resources :items, only: [:index, :show]
+  end
 
 
   devise_for :users

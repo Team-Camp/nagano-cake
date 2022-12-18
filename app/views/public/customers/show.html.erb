@@ -6,34 +6,27 @@
 <table border="1">
   <tr>
     <th>氏名</th>
-    <th></th>
-    <!--姓と名　customer.last_name, customer.first_name-->
-    <!--これを入れるとスペースを作れる　&emsp;-->
+    <th><%= @customer.last_name +"  "+ @customer.first_name %></th>
   </tr>
   <tr>
     <td>カナ</td>
-    <td><%=  %></td>
-    <!--customer.last_name_kana,customer.first_name_kana-->
+    <td><%= @customer.last_name_kana +"  "+ @customer.first_name_kana %></td>
   </tr>
   <tr>
     <td>郵便番号</td>
-    <td><%=  %></td>
-    <!--customer.postal_code-->
+    <td><%= @customer.postal_code %></td>
   </tr>
   <tr>
     <td>住所</td>
-    <td><%=  %></td>
-    <!--customer.address-->
+    <td><%= @customer.address %></td>
   </tr>
   <tr>
     <td>電話番号</td>
-    <td><%=  %></td>
-    <!--customer.telephone_number        -->
+    <td><%=  @customer.telephone_number %></td>
   </tr>
   <tr>
     <td>メールアドレス</td>
-    <td><%=  %></td>
-    <!--customer.postal_code-->
+    <td><%= @customer.postal_code %></td>
   </tr>
 </table>
 

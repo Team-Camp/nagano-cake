@@ -1,1 +1,58 @@
-<h1></h1>
+<h1>会員情報編集</h1>
+
+<table>
+  <tr>
+    <th>
+        氏名
+        <%= %>
+        <%= %>
+    </th>
+    <!--姓と名　customer.last_name, customer.first_name-->
+    <!--これを入れるとスペースを作れる　&emsp;-->
+  </tr>
+  <tr>
+    <td>
+        フリガナ
+        <%= %>
+        <%= %>
+    </t>
+    <!--customer.last_name_kana,customer.first_name_kana-->
+  </tr>
+  <tr>
+    <td>
+        郵便番号
+        <%= %>
+        <%= %>
+    </td>
+    <!--customer.postal_code-->
+  </tr>
+  <tr>
+    <td>
+        住所
+        <%= %>
+        <%= %>
+    </td>
+    <!--customer.address-->
+  </tr>
+  <tr>
+    <td>
+        電話番号
+        <%= %>
+        <%= %>
+    </td>
+    <!--customer.telephone_number        -->
+  </tr>
+  <tr>
+    <td>
+        メールアドレス
+        <%= %>
+        <%= %>
+    </td>
+    <!--customer.postal_code-->
+  </tr>
+</table>
+
+
+<p><%= link_to "編集内容を保存","/addresses", class:"btn btn-sm btn-success" %></p>
+
+<p><%= link_to "退会する", unsubscribe_path, class:"btn btn-sm btn-success" %></p>

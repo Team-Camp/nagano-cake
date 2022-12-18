@@ -16,13 +16,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   #devise_for :users
 
 
-scope module: :public do
-  get 'customers/mypage' => 'customers#show'
-  get 'customers/information/edit' => 'customers#edit'
-  get 'unsubscribe' => 'customers#unsubcribe'
-  patch 'customers/information' => 'customers#update'
-  patch 'withdraw' => 'customers#withdraw'
-end
+  scope module: :public do
+    get 'customers/mypage' => 'customers#show', as: 'mypage'
+    get 'customers/information/edit' => 'customers#edit', as: 'information_edit'
+    get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/information' => 'customers#update'
+    patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
+  end
 
 
   devise_for :users

@@ -1,5 +1,5 @@
 <%# if @admin.errors.any? %>
-  <%#= @admin.errors.count %>errors prohibited this obj from being saved:
+  <%#= @admin.errors.count #コメントアウト→errors prohibited this obj from being saved:%>
   <ul>
    <%# @admin.errors.full_messages.each do |message| %>
     <li><%#= message %></li>
@@ -13,7 +13,7 @@
    <div class="col-md-3">
    <h2>会員一覧</h2>
 
-   <td><%= @admin_customers.each do |admin_customer| %></td>
+   <td><%= @admin_customers.each do |admin_customer| %>
    <table class="table">
     <tbody>
      <tr></tr>
@@ -31,8 +31,9 @@
      </tr>
      <tr>
       <th>ステータス</th>
-      <th><%#= current_user.name %></th>
-     </tr>
+      <th><%#= current_user.status %></th>
+      </tr>
+     </td>
     </tbody>
    </table>
    <% end %>

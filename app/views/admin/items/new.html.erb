@@ -28,13 +28,11 @@
         <td>販売ステータス</td>
         <td><%= f.radio_button :is_active, true %>販売中　<%= f.radio_button :is_active, :false %>販売停止中</td>
       </tr>
-
-      <tr>
-        <div class="actions">
-          <%= f.submit "新規登録" %>
-        </div>
-      </tr>
-
     </tbody>
   </table>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+
 <% end %>

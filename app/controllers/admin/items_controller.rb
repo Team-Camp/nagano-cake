@@ -5,10 +5,12 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all
   end
 
   def create
     @item = Item.new(item_params)
+    @genre = Genre.all
 
     if @item.save
       # フラッシュメッセージを定義
@@ -18,9 +20,9 @@ class Admin::ItemsController < ApplicationController
     else
       # indexページにリダイレクト（ページを移動せずそのまま更新）
       # render :indexするとindexアクションをすっ飛ばすため、ここにBook.allのインスタンスを作る必要あり
-      @item = Item.all
+      @items = Item.all
       # redirect_to books_path
-      render :new
+      render :index
     end
   end
 
@@ -36,7 +38,7 @@ class Admin::ItemsController < ApplicationController
   private
   # ストロングパラメータ
   def item_params
-    params.require(:item).permit(:name,:introduction,:price,:is_active,:image)
+    params.require(:item).permit(:name,:introduction,:price,:is_active,:image,:genre_id)
   end
 
 end

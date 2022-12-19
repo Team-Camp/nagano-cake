@@ -3,11 +3,10 @@
   <h3>会員の方はこちらからログイン</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
- <%= render "public/shared/error_messages", resource: resource %>
   <table class="table">
     <tbody>
       <tr>
-        <td>メールアドレス</td>
+        <tb>メールアドレス</tb>
         <tb><%= f.email_field :email, autofocus: true, autocomplete: "email",:placeholder => "sample@example.com" %></tb>
       </tr>
       <tr>

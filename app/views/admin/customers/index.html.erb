@@ -8,37 +8,28 @@
   </ul>
 <%# end %>
 
-<main>
-  <div class="container px-5 px-sm-0">
-   <div class="row">
-   <div class="col-md-3">
+ <main>
+  <table class="table">
    <h2>会員一覧</h2>
+    <th>会員ID</th>
+    <th>氏名</th>
+    <th>メールアドレス</th>
+    <th>ステータス</th>
 
-   <td><%= @admin_customers.each do |admin_customer| %>
-   <table class="table">
-    <tbody>
-     <tr></tr>
-     <tr>
-      <th>会員ID</th>
-      <th><%= @admin_customers.id %></th>
-     </tr>
-     <tr>
-      <th>氏名</th>
-      <th><%= @admin_customers.last_name + @admin_customers.first_name %></th>
-      <td><%= link_to admin_customer_path(@admin_customers.id) do %>
-          <% end %>
-      </td>
-     </tr>
-     <tr>
-      <th>メールアドレス</th>
-      <th><%= @admin_customers.email %></th>
-     </tr>
-     <tr>
-      <th>ステータス</th>
-      <th><%= @admin_customers.is_deleted %></th>
-      </tr>
-     </td>
-    </tbody>
-   </table>
-   <% end %>
-   <%= paginate @admin_customers %>
+    <%# 顧客一覧情報の繰り返し処理 %>
+    <td><% @admin_customers.each do |admin_customer| %>
+　 <tbody>
+    <th><%= admin_customer.id %></th>
+    <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
+    <th><%= admin_customer.email %></th>
+    <th>
+    <% if admin_customer.is_deleted == false %>有効
+    <% elsif admin_customer.is_deleted == true %>退会
+    <% end %>
+    </th>
+
+    </td>
+   </tbody>
+  </table>
+ <% end %>
+ <%= paginate @admin_customers %>

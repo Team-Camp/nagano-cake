@@ -3,7 +3,7 @@
    行間、会員ステータス（有効or無効）、ボタンの色変更%>
 
 <%#会員No.1 大阪太郎さんのデータが映ることを確認済み%>
-<p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細</p>
+<p><%#= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細</p>
 
  <table class="table">
   <tbody>
@@ -67,8 +67,10 @@
     <tr>
      <th>会員ステータス</th>
      <th>
-     <%= @admin_customer.is_deleted %>
-
+     <% @admin_customer.is_deleted %>
+    <% if @admin_customer.is_deleted == false %>有効
+    <% elsif @admin_customer.is_deleted == true %>退会
+    <% end %>
      </th>
     </tr>
    </tbody>

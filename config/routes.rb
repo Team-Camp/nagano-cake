@@ -43,9 +43,9 @@ get '/about' => 'public/homes#about'
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
  end
- 
 
- 
+
+
 
 #get '/admin/genres' => 'admin/genres#index'
 #post '/admin/genres' => 'admin/genres#create'

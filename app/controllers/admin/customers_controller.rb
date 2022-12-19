@@ -8,6 +8,7 @@ def index
 end
 
 def show
+ @admin_customer = Customer.find(params[:id])
 end
 
 def edit
@@ -15,5 +16,4 @@ end
 
 def update
 end
-
 end

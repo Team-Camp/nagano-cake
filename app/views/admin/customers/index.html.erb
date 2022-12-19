@@ -20,22 +20,22 @@
      <tr></tr>
      <tr>
       <th>会員ID</th>
-      <th><%#= current_user.id %></th>
+      <th><%= @admin_customers.id %></th>
      </tr>
      <tr>
       <th>氏名</th>
-      <th><%#= current_user.name %></th>
+      <th><%= @admin_customers.last_name + @admin_customers.first_name %></th>
       <td><%= link_to admin_customer_path(@admin_customers.id) do %>
           <% end %>
       </td>
      </tr>
      <tr>
       <th>メールアドレス</th>
-      <th><%#= current_user.email %></th>
+      <th><%= @admin_customers.email %></th>
      </tr>
      <tr>
       <th>ステータス</th>
-      <th><%#= current_user.status %></th>
+      <th><%= @admin_customers.is_deleted %></th>
       </tr>
      </td>
     </tbody>

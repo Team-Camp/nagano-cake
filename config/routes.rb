@@ -29,20 +29,24 @@ end
     patch 'customers/information' => 'customers#update'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
   end
-  
-  
+
+
   namespace :public do
     resources :items, only: [:index, :show]
   end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-get '/top' => 'public/homes#top'
+root to: 'public/homes#top'
 get '/about' => 'public/homes#about'
 
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
  end
+ 
+
+ 
+
 #get '/admin/genres' => 'admin/genres#index'
 #post '/admin/genres' => 'admin/genres#create'
 #get '/admin/genres/:id/edit' => 'admin/genres#edit'

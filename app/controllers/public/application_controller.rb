@@ -8,6 +8,6 @@ class Public::ApplicationController < ApplicationController
   
   # ログイン後の遷移先ページ
   def after_sign_up_path_for(resource)
-    customers_mypage_path
+    mypage_path
   end
 end

@@ -1,0 +1,40 @@
+<%# if @admin.errors.any? %>
+  <%#= @admin.errors.count #コメントアウト→errors prohibited this obj from being saved:%>
+  <ul>
+   <%# @admin.errors.full_messages.each do |message| %>
+    <li><%#= message %></li>
+   <%# end %>
+  </ul>
+<%# end %>
+
+<main>
+  <div class="container px-5 px-sm-0">
+   <div class="row">
+   <div class="col-md-3">
+   <h2>会員一覧</h2>
+
+   <td><%= @admin_customers.each do |admin_customer| %>
+   <table class="table">
+    <tbody>
+     <tr></tr>
+     <tr>
+      <th>会員ID</th>
+      <th><%#= current_user.id %></th>
+     </tr>
+     <tr>
+      <th>氏名</th>
+      <th><%#= current_user.name %></th>
+     </tr>
+     <tr>
+      <th>メールアドレス</th>
+      <th><%#= current_user.email %></th>
+     </tr>
+     <tr>
+      <th>ステータス</th>
+      <th><%#= current_user.status %></th>
+      </tr>
+     </td>
+    </tbody>
+   </table>
+   <% end %>
+   <%= paginate @admin_customers %>

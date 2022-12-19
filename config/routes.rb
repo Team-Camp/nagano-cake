@@ -20,6 +20,23 @@ namespace :admin do
 end
 
   #devise_for :users
+
+
+  scope module: :public do
+    get 'customers/mypage' => 'customers#show', as: 'mypage'
+    get 'customers/information/edit' => 'customers#edit', as: 'information_edit'
+    get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/information' => 'customers#update'
+    patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
+  end
+  
+  
+  namespace :public do
+    resources :items, only: [:index, :show]
+  end
+
+
+  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 get '/top' => 'public/homes#top'
 get '/about' => 'public/homes#about'

@@ -1,8 +1,8 @@
 <div class="container">
   <header>
-    <%= link_to image_tag("cake.png"), top_path, data: {"turbolinks" => false} %>
-     
-     
+    <%= link_to image_tag("naganocake.jpg"), top_path, data: {"turbolinks" => false} %>
+
+
     <!--＜顧客がサインインした場合＞-->
     <% if customer_signed_in? %>
     <span>ようこそ！<%= current_customer.last_name + current_customer.first_name %>さん</span>
@@ -20,8 +20,8 @@
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
         </li>
       </ul>
-      
-      
+
+
       <!--＜管理者がログインした場合＞-->
       <% elsif admin_signed_in? %>
       <ul class="navbar-nav">
@@ -40,9 +40,9 @@
         <li class="nav-item">
           <%= link_to "ログアウト", admin_sign_out_path, method: :delete, class: "nav-link" %>
         </li>
-      </ul> 
-       
-       
+      </ul>
+
+
       <!--＜サインインしていない場合＞-->
       <% else %>
       <ul class="navbar-nav">

@@ -13,5 +13,10 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, numericality: {only_integer: true}
   validates :address, presence: true
   validates :telephone_number, presence: true, numericality: {only_integer: true}
+  
+  
+   def active_for_authentication?
+    super && (is_deleted == false)
+   end
 
 end

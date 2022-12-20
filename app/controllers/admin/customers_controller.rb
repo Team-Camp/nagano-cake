@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
 
-#管理者(admin_user)のみ、編集と更新が可能
-before_action :admin_user, only: [:edit, :update]
+#管理者はログインしなければ情報の確認、編集、保存等ができない。
+#一旦はコメントアウトにしておきます。
+#before_action :authenticate_admin!
 
 def index
  @admin_customers = Customer.all.page(params[:page])
@@ -19,15 +20,18 @@ end
 
 #顧客編集画面で対象ユーザーを更新した時の処理内容
  def update
- @admin_customer = Customer.find(params[:id])
- @admin_customer.update
-  if @admin_customer.save
-   flash[:notice] = "You have updated successfully."
+  @admin_customer = Customer.find(params[:id])
+  if @admin_customer.update(admin_customer_params)
+   flash[:notice] = "情報の変更が完了しました."
    redirect_to admin_customer_path
-   flash[:notice] = "successfully"
   else
-   flash[:alret] = "Error"
-   render :'admin/customers/edit'
+   flash[:alret] = "変更の保存に失敗しました"
+   render :edit
   end
  end
+
+ private
+  def admin_customer_params
+   params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :email)
+  end
 end

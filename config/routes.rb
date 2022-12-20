@@ -22,6 +22,7 @@ end
   #devise_for :users
 
 
+# 顧客のマイページ、編集画面、退会画面
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/information/edit' => 'customers#edit', as: 'information_edit'
@@ -31,6 +32,7 @@ end
   end
 
 
+# 商品一覧
   namespace :public do
     resources :items, only: [:index, :show]
   end

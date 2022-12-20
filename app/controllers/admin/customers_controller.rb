@@ -15,21 +15,23 @@ end
 
 #顧客編集画面を表示
 def edit
-
  @admin_customer = Customer.find(params[:id])
 end
 
 #顧客編集画面で対象ユーザーを更新した時の処理内容
  def update
- @admin_customer = Customer.find(params[:id])
- @admin_customer.update
-  if @admin_customer.save
-   flash[:notice] = "You have updated successfully."
+  @admin_customer = Customer.find(params[:id])
+  if @admin_customer.update(admin_customer_params)
+   flash[:notice] = "情報の変更が完了しました."
    redirect_to admin_customer_path
-   flash[:notice] = "変更の保存が完了しました。"
   else
-   flash[:alret] = "変更保存エラー"
-   render :'admin/customers/edit'
+   flash[:alret] = "変更の保存に失敗しました"
+   render :edit
   end
  end
+
+ private
+  def admin_customer_params
+   params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :email)
+  end
 end

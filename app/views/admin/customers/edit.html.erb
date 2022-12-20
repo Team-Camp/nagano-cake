@@ -1,7 +1,7 @@
 
 <p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員情報編集</p>
 
-<%#= form_with model: @admin_customers, url: admin_customers_path(@admin_customer), method: :patch do |f| %>
+<%= form_with model: @admin_customer, url: admin_customer_path, method: :patch do |f| %>
 <table class="table">
  <tbody>
   <tr></tr>
@@ -17,8 +17,7 @@
   <tr>
    <th>氏名</th>
    <th>
-   <%#= f.text_field :title %>
-   <%= @admin_customer.last_name + @admin_customer.first_name %>
+   <%= f.text_field :last_name %> <%= f.text_field :first_name %>
    </th>
   </tr>
 
@@ -26,8 +25,7 @@
   <tr>
    <th>フリガナ</th>
    <th>
-   <%#= f.text_field :title %>
-   <%= @admin_customer.last_name_kana + @admin_customer.first_name_kana %>
+   <%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %>
    </th>
   </tr>
 
@@ -35,8 +33,7 @@
   <tr>
    <th>郵便番号</th>
    <th>
-   <%#= f.text_field :title %>
-   <%= @admin_customer.postal_code %>
+   <%= f.text_field :postal_code %>
    </th>
   </tr>
 
@@ -44,8 +41,7 @@
   <tr>
    <th>住所</th>
    <th>
-   <%#= f.text_field :body %>
-   <%= @admin_customer.address %>
+   <%= f.text_field :address %>
    </th>
   </tr>
 
@@ -53,8 +49,7 @@
   <tr>
    <th>電話番号</th>
    <th>
-   <%#= f.text_field :title %>
-   <%= @admin_customer.telephone_number %>
+   <%= f.text_field :telephone_number %>
    </th>
   </tr>
 
@@ -62,22 +57,19 @@
   <tr>
    <th>メールアドレス</th>
    <th>
-   <%#= f.text_field :body %>
-   <%= @admin_customer.email %>
+   <%= f.text_field :email %>
+
    </th>
   </tr>
 
-　　<%#対象ユーザーの会員ステータスを記載 %>
+　　<%#対象ユーザーの会員ステータスを選択 %>
   <tr>
    <th>会員ステータス</th>
    <th>
-   <% @admin_customer.is_deleted %>
-   <% if @admin_customer.is_deleted == false %>有効
-   <% elsif @admin_customer.is_deleted == true %>退会
-   <% end %>
+    <%= f.radio_button :is_active, false %>有効　<%= f.radio_button :is_active, :true %>退会</td>
    </th>
   </tr>
  </tbody>
 </table>
-
-<%= link_to "変更を保存", admin_customer_path(@admin_customer.id) %>
+<%= f.submit "変更を保存" %>
+<% end %>

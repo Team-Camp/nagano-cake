@@ -3,11 +3,12 @@
    行間、会員ステータス（有効or無効）、ボタンの色変更%>
 
 <%#会員No.1 大阪太郎さんのデータが映ることを確認済み%>
-<p><%#= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細</p>
+<p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細</p>
 
  <table class="table">
   <tbody>
    <tr></tr>
+   <%# 対象ユーザーの会員IDを記載 %>
     <tr>
      <th>会員ID</th>
      <th>

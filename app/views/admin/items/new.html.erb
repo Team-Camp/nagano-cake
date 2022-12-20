@@ -1,4 +1,11 @@
-<h1>Items#newページです</h1>
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <h1>商品新規画像</h1>
 <%= form_with model: @item,url: admin_items_path do |f| %>

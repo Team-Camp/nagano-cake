@@ -5,7 +5,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    # ページネーションを適用
+    @items = Item.page(params[:page])
   end
 
   def create
@@ -18,21 +19,27 @@ class Admin::ItemsController < ApplicationController
       # showページにリダイレクト
       redirect_to admin_item_path(@item.id)
     else
-      # indexページにリダイレクト（ページを移動せずそのまま更新）
-      # render :indexするとindexアクションをすっ飛ばすため、ここにBook.allのインスタンスを作る必要あり
-      @items = Item.all
-      # redirect_to books_path
-      render :index
+      render :new
     end
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      # フラッシュメッセージを設定
+      flash[:notice] = "商品は編集されました"
+      redirect_to admin_items_path
+    else
+      render :edit
+    end
   end
 
   private

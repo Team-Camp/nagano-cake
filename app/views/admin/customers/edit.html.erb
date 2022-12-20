@@ -1,39 +1,83 @@
 
-<%= form_with model: @admin_customer, url: information_edit_path(@admin_customer), method: :patch do |f| %>
+<p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員情報編集</p>
 
+<%#= form_with model: @admin_customers, url: admin_customers_path(@admin_customer), method: :patch do |f| %>
 <table class="table">
  <tbody>
+  <tr></tr>
+  <%# 対象ユーザーの会員IDを記載 %>
   <tr>
-   <td>会員ID</td>
-   <td><%#= current_user.id %></td>
+   <th>会員ID</th>
+   <th>
+   <%= @admin_customer.id %>
+   </th>
   </tr>
 
+  <%#対象ユーザーの氏名を記載 %>
   <tr>
-   <td>氏名</td>
+   <th>氏名</th>
+   <th>
+   <%#= f.text_field :title %>
+   <%= @admin_customer.last_name + @admin_customer.first_name %>
+   </th>
   </tr>
 
+  <%#対象ユーザーのフリガナを記載 %>
   <tr>
-   <td>フリガナ</td>
+   <th>フリガナ</th>
+   <th>
+   <%#= f.text_field :title %>
+   <%= @admin_customer.last_name_kana + @admin_customer.first_name_kana %>
+   </th>
   </tr>
 
+  <%#対象ユーザーの郵便番号を記載 %>
   <tr>
-   <td>郵便番号</td>
+   <th>郵便番号</th>
+   <th>
+   <%#= f.text_field :title %>
+   <%= @admin_customer.postal_code %>
+   </th>
   </tr>
 
+  <%#対象ユーザーの住所を記載 %>
   <tr>
-   <td>住所</td>
+   <th>住所</th>
+   <th>
+   <%#= f.text_field :body %>
+   <%= @admin_customer.address %>
+   </th>
   </tr>
 
+　<%#対象ユーザーの電話番号を記載 %>
   <tr>
-   <td>電話番号</td>
+   <th>電話番号</th>
+   <th>
+   <%#= f.text_field :title %>
+   <%= @admin_customer.telephone_number %>
+   </th>
   </tr>
 
+　<%#対象ユーザーのメールアドレスを記載 %>
   <tr>
-   <td>メールアドレス</td>
+   <th>メールアドレス</th>
+   <th>
+   <%#= f.text_field :body %>
+   <%= @admin_customer.email %>
+   </th>
   </tr>
 
+　　<%#対象ユーザーの会員ステータスを記載 %>
   <tr>
-   <td>会員ステータス</td>
+   <th>会員ステータス</th>
+   <th>
+   <% @admin_customer.is_deleted %>
+   <% if @admin_customer.is_deleted == false %>有効
+   <% elsif @admin_customer.is_deleted == true %>退会
+   <% end %>
+   </th>
   </tr>
+ </tbody>
+</table>
 
-<%= link_to "変更を保存", admin_customer_path %>
+<%= link_to "変更を保存", admin_customer_path(@admin_customer.id) %>

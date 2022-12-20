@@ -1,0 +1,39 @@
+
+<%= form_with model: @admin_customer, url: information_edit_path(@admin_customer), method: :patch do |f| %>
+
+<table class="table">
+ <tbody>
+  <tr>
+   <td>会員ID</td>
+   <td><%#= current_user.id %></td>
+  </tr>
+
+  <tr>
+   <td>氏名</td>
+  </tr>
+
+  <tr>
+   <td>フリガナ</td>
+  </tr>
+
+  <tr>
+   <td>郵便番号</td>
+  </tr>
+
+  <tr>
+   <td>住所</td>
+  </tr>
+
+  <tr>
+   <td>電話番号</td>
+  </tr>
+
+  <tr>
+   <td>メールアドレス</td>
+  </tr>
+
+  <tr>
+   <td>会員ステータス</td>
+  </tr>
+
+<%= link_to "変更を保存", admin_customer_path %>

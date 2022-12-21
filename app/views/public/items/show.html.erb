@@ -1,18 +1,22 @@
+<!--ジャンル検索-->
+<div class="offset-1 col-10">
+  <div class="row d-flex aline-items-center">
+    <strong class="red-border px-3 pb-1">ジャンル検索</strong>
+  </div>
+  <% @genres.each do |genre| %>
+    <%= link_to admin_genres_path(genre) do %>
+      <%= genre.name %>
+    <% end %>
+  <% end %>
+</div>
 
 
-
+<!--商品詳細-->
 <p><%= image_tag @item.image, size:"200x200" %></p>
 
 <h3><%= @item.name %></h3>
-
 <p><%= @item.introduction %></p>
-
 ¥ <%= ((@item.price*1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)
 
 
-
-
 <p><%= link_to "カートに入れる", class:"btn btn-sm btn-success" %></p>
-
-<%#= f.submit "カートに入れる" %>
-

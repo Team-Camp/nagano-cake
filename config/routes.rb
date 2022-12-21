@@ -30,7 +30,10 @@ end
     get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/information' => 'customers#update'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
+    resources :addresses, only: [:index,:edit,:create,:update,:destroy]
   end
+
+
 
 
 

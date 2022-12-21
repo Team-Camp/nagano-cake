@@ -37,6 +37,7 @@ end
 # 商品一覧
   namespace :public do
     resources :items, only: [:index, :show]
+    resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create] #カート内商品等の記載（濱岡）
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -55,5 +56,16 @@ get '/about' => 'public/homes#about'
 #post '/admin/genres' => 'admin/genres#create'
 #get '/admin/genres/:id/edit' => 'admin/genres#edit'
 #patch '/admin/genres/:id' => 'admin/genres#update'
+
+ namespace :public do
+   resources :orders, only: [:new,:index,:create,:show] do
+     collection do
+      post 'confirm'
+      get 'complete'
+     end
+   end
+ end
+
+
 
 end

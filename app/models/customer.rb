@@ -16,6 +16,9 @@ class Customer < ApplicationRecord
 
  has_many :addresses, dependent: :destroy
 
+ #カートアイテムの記載（濱岡）
+ has_many :cart_items, dependent: :destroy
+
    def active_for_authentication?
     super && (is_deleted == false)
    end

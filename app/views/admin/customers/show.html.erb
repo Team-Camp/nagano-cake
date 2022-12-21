@@ -1,0 +1,88 @@
+
+<%#課題事項：会員詳細の背景色変更、履歴一覧のパス変更
+   行間、ボタンの色変更%>
+
+<%#会員No.1 大阪太郎さんのデータが映ることを確認済み%>
+<p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細</p>
+
+ <table class="table">
+  <tbody>
+   <tr></tr>
+   <%# 対象ユーザーの会員IDを記載 %>
+    <tr>
+     <th>会員ID</th>
+     <th>
+     <%= @admin_customer.id %>
+     </th>
+    </tr>
+
+   <%#対象ユーザーの氏名を記載 %>
+    <tr>
+     <th>氏名</th>
+     <th>
+     <%= @admin_customer.last_name + @admin_customer.first_name %>
+     </th>
+    </tr>
+
+   <%#対象ユーザーのフリガナを記載 %>
+    <tr>
+     <th>フリガナ</th>
+     <th>
+     <%= @admin_customer.last_name_kana + @admin_customer.first_name_kana %>
+     </th>
+    </tr>
+
+    <%#対象ユーザーの郵便番号を記載 %>
+    <tr>
+     <th>郵便番号</th>
+     <th>
+     <%= @admin_customer.postal_code %>
+     </th>
+    </tr>
+
+　　<%#対象ユーザーの住所を記載 %>
+    <tr>
+     <th>住所</th>
+     <th>
+     <%= @admin_customer.address %>
+     </th>
+    </tr>
+
+　　<%#対象ユーザーの電話番号を記載 %>
+    <tr>
+     <th>電話番号</th>
+     <th>
+     <%= @admin_customer.telephone_number %>
+     </th>
+    </tr>
+
+　　<%#対象ユーザーのメールアドレスを記載 %>
+    <tr>
+     <th>メールアドレス</th>
+     <th>
+     <%= @admin_customer.email %>
+     </th>
+    </tr>
+
+　　<%#対象ユーザーの会員ステータスを記載 %>
+    <tr>
+     <th>会員ステータス</th>
+     <th>
+     <% @admin_customer.is_deleted %>
+    <% if @admin_customer.is_deleted == false %>有効
+    <% elsif @admin_customer.is_deleted == true %>退会
+    <% end %>
+     </th>
+    </tr>
+   </tbody>
+</table>
+
+     <%#編集画面への遷移を確認済み 1219 17:00 %>
+     <div class="form-group">
+      <%= link_to '編集する', edit_admin_customer_path, class: "btn btn-success" %>
+
+     <%#注文履歴一覧のpathはせいちゃん作成後、再度設定。%>
+      <%= link_to '注文履歴一覧を見る', public_items_path, class: "btn btn-success" %>
+
+
+

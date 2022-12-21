@@ -19,6 +19,11 @@ namespace :admin do
   resources:customers, only: [:index, :show, :edit, :update]
 end
 
+
+  #devise_for :users
+
+
+# 顧客のマイページ、編集画面、退会画面
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/information/edit' => 'customers#edit', as: 'information_edit'
@@ -29,6 +34,9 @@ end
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
   end
 
+
+
+# 商品一覧
   namespace :public do
     resources :items, only: [:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create] #カート内商品等の記載（濱岡）
@@ -51,4 +59,14 @@ get '/about' => 'public/homes#about'
 #get '/admin/genres/:id/edit' => 'admin/genres#edit'
 #patch '/admin/genres/:id' => 'admin/genres#update'
 
+ namespace :public do
+   resources :orders, only: [:new,:index,:create,:show] do
+     collection do
+      post 'confirm'
+      get 'complete'
+     end
+   end
+ end
+ 
+ 
 end

@@ -1,14 +1,16 @@
 <!--ジャンル検索-->
-<div class="offset-1 col-10">
-  <div class="row d-flex aline-items-center">
-    <strong class="red-border px-3 pb-1">ジャンル検索</strong>
-  </div>
-  <% @genres.each do |genre| %>
-    <%= link_to public_item_path(genre) do %>
-      <%= genre.name %>
+<strong>ジャンル検索</strong>
+
+<tbody>
+    <% @genres.each do |genre| %>
+    <tr>
+      <td>
+        <%= link_to genre.name, public_items_path(genre_id: genre.id), class: "text-secondary" %>
+      </td>
+    </tr>
     <% end %>
-  <% end %>
-</div>
+</tbody>
+
 
 
 <!--商品詳細-->
@@ -20,7 +22,6 @@
 
 
 <!--個数選択-->
-<!--url部分はマイページに飛ぶようになってますが、カートurlができ次第変更します！-->
 <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
   <%= f.hidden_field :item_id, :value => @item.id %>
   <%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>

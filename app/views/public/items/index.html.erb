@@ -1,14 +1,16 @@
 <!--ジャンル検索-->
-<div class="offset-1 col-10">
-  <div class="row d-flex aline-items-center">
-    <strong class="red-border px-3 pb-1">ジャンル検索</strong>
-  </div>
-  <% @genres.each do |genre| %>
-    <%= link_to public_item_path(genre) do %>
-      <%= genre.name %>
+<strong>ジャンル検索</strong>
+
+<tbody>
+    <% @genres.each do |genre| %>
+    <tr>
+      <td>
+        <%= link_to genre.name, public_items_path(genre_id: genre.id), class: "text-secondary" %>
+      </td>
+    </tr>
     <% end %>
-  <% end %>
-</div><br>
+</tbody>
+
 
 
 <!--一覧部分-->

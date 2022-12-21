@@ -19,4 +19,11 @@
 ¥ <%= ((@item.price*1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)
 
 
-<p><%= link_to "カートに入れる", class:"btn btn-sm btn-success" %></p>
+<!--個数選択-->
+<!--url部分はマイページに飛ぶようになってますが、カートurlができ次第変更します！-->
+<%= form_with model: @cart_item, url: mypage_path do |f| %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %>
+  <%= f.submit "カートに入れる" %>
+<% end %>
+

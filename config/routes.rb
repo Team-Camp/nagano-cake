@@ -67,6 +67,6 @@ get '/about' => 'public/homes#about'
      end
    end
  end
- 
- 
+
+
 end

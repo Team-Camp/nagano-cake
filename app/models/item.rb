@@ -11,4 +11,12 @@ class Item < ApplicationRecord
 
   # genreに対して多対１の記述
   belongs_to :genre
+
+  #税率記載(濱岡)
+  #ceilは切り上げ、floorが切り捨て、roundが四捨五入
+  def with_tax_price
+  (price * 1.1).ceil
+
+
+  end
 end

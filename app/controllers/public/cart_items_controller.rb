@@ -3,9 +3,9 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
 #ショッピングカート内の商品表示
  def index
-  @cart_items = current_customer.cart_items.includes([:item])
+  @cart_items = current_customer.cart_items.includes(:item)
   @prices = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-  @amounts = current_customer.cart_items.includes([:amount])
+  @amounts = current_customer.cart_items
  end
 
 #カート内アイテムの更新
@@ -38,14 +38,23 @@ class Public::CartItemsController < ApplicationController
  end
 
  def create
-  @cart_items ||= current_customer.cart_items.build(product_id: params[:product_id])
-  @cart_items.amount += params[:amount].to_i
-  if @cart_items.save
-   flash[:notice] = '商品が追加されました。'
-   redirect_to public_cart_items_path
+  if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+  cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+  cart_item.amount += params[:amount].to_i
+  cart_item.update(amount: cart_item.amount)
+  flash[:notice] = '商品が追加されました。'
+  redirect_to public_cart_items_path
   else
-   flash[:alert] = '商品の追加に失敗しました。'
-　 redirect_to public_cart_items_path
-　 end
+   cart_item = current_customer.cart_items.new(cart_item_params)
+   cart_item.save
+   flash[:notice] = '商品の追加に成功しました。'
+   redirect_to public_cart_items_path
+  end
  end
+
+   private
+  def cart_item_params
+   params.require(:cart_item).permit(:amount, :item_id)
+  end
+
 end

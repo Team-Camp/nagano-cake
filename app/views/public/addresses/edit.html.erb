@@ -1,0 +1,35 @@
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= flash[:notice] %>
+
+<h1>配送先登録/一覧</h1>
+<%= form_with model: @address, url: address_path, method: :patch do |f| %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>郵便番号(ハイフンなし)</td>
+        <td><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= f.text_field :address %></td>
+      </tr>
+      <tr>
+        <td>宛名</td>
+        <td><%= f.text_area :name %></td>
+        <td>
+          <div class="actions">
+            <%= f.submit "変更内容を保存" %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

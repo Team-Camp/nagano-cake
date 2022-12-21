@@ -19,10 +19,6 @@ namespace :admin do
   resources:customers, only: [:index, :show, :edit, :update]
 end
 
-
-  #devise_for :users
-
-
 # 顧客のマイページ、編集画面、退会画面
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'mypage'
@@ -48,9 +44,8 @@ get '/about' => 'public/homes#about'
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
   resources :items, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述
+  resources :orders, only: [:show, :update]
  end
-
-
 
 
 #get '/admin/genres' => 'admin/genres#index'
@@ -66,6 +61,6 @@ get '/about' => 'public/homes#about'
      end
    end
  end
- 
- 
+
+
 end

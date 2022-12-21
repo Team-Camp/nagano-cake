@@ -1,4 +1,7 @@
 class Public::CustomersController < ApplicationController
+  
+  before_action :authenticate_customer!, except: [:index]
+  
   def show
     @customer = current_customer
   end

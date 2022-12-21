@@ -3,11 +3,11 @@
 <%= form_with model: @customer, url: customers_information_path, method: :PATCH do |f| %>
 <table>
   <tr>
-    <th>
+    <td>
         <%= f.label :"氏名" %>
         <%= f.text_field :last_name %>
         <%= f.text_field :first_name %>
-    </th>
+    </td>
   </tr>
   <tr>
     <td>
@@ -38,7 +38,7 @@
   <tr>
     <td>
         <%= f.label :"メールアドレス" %>
-        <%= f.text_field :postal_code %>
+        <%= f.text_field :email %>
     </td>
   </tr>
 </table>

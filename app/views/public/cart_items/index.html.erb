@@ -1,0 +1,43 @@
+
+<%# ショッピングカートの一覧画面作成 %>
+<%# 課題事項：タイトルの背景色変更,
+　　買い物を続けるボタンのパス変更, パスの確認, %>
+<h3>ショッピングカート</h3>
+
+<%# ショッピングカートの右側の表示機能 %>
+<%= link_to 'カートを空にする', public_cart_items_path, class: "btn btn-success" %>
+
+ <main>
+  <table class="table">
+   <%# 商品名,単価,数量,小計の繰り返し処理 %>
+   <th>商品名</th>
+   <td><% @cart_items.each do |cart_item| %></td>
+
+    <th>単価（税込）</th>
+    <td><% @prices.each do |price| %></td>
+
+    <th>数量</th>
+    <td><% @amounts.each do |amount| %></td>
+    <%= link_to '変更', public_cart_items_path, class: "btn btn-success" %>
+
+    <th>小計</th>
+    <td><% @prices.each do |price| %></td>
+    <th><%= link_to '削除する', public_cart_items_path, class: "btn btn-success" %></th>
+　 <tbody>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>
+   </tbody>
+  </table>
+
+<th>合計金額</th>
+<%# 単価（税込）合計金額の記載 %>
+<h4><%= "合計:#{@prices}円" %></h4>
+
+<%# ショッピングカート真ん中部分の表示機能 %>
+<%= link_to '買い物を続ける', root_path, class: "btn btn-success" %>
+
+<%# ショッピングカート下部分の表示機能, public/ordersを作成してもらったあとにパス変更！%>
+<%= link_to '情報入力に進む', root_path, class: "btn btn-success" %>
+

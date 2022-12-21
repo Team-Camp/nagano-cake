@@ -38,8 +38,8 @@ class Public::CartItemsController < ApplicationController
  end
 
  def create
-  @cart_items ||= current_cart.cart_cart_items.build(product_id: params[:product_id])
-  @cart_items.amount += params[:quantity].to_i
+  @cart_items ||= current_customer.cart_items.build(product_id: params[:product_id])
+  @cart_items.amount += params[:amount].to_i
   if @cart_items.save
    flash[:notice] = '商品が追加されました。'
    redirect_to public_cart_items_path

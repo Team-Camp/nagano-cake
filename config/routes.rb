@@ -30,8 +30,6 @@ end
     get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/information' => 'customers#update'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
-
-    resources :addresses, only: [:index,:edit,:create,:update,:destroy]
   end
 
 
@@ -58,14 +56,4 @@ get '/about' => 'public/homes#about'
 #get '/admin/genres/:id/edit' => 'admin/genres#edit'
 #patch '/admin/genres/:id' => 'admin/genres#update'
 
- namespace :public do
-   resources :orders, only: [:new,:index,:create,:show] do
-     collection do
-      post 'confirm'
-      get 'complete'
-     end
-   end
- end
- 
- 
 end

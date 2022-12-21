@@ -4,7 +4,7 @@
     <strong class="red-border px-3 pb-1">ジャンル検索</strong>
   </div>
   <% @genres.each do |genre| %>
-    <%= link_to admin_genres_path(genre) do %>
+    <%= link_to public_item_path(genre) do %>
       <%= genre.name %>
     <% end %>
   <% end %>

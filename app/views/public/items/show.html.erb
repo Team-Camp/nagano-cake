@@ -1,9 +1,18 @@
 
 
 
+<p><%= image_tag @item.image, size:"200x200" %></p>
 
 <h3><%= @item.name %></h3>
+
 <p><%= @item.introduction %></p>
 
+¥ <%= ((@item.price*1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)
 
-<p><%#= f.submit "カートに入れる" %></p>
+
+
+
+<p><%= link_to "カートに入れる", class:"btn btn-sm btn-success" %></p>
+
+<%#= f.submit "カートに入れる" %>
+

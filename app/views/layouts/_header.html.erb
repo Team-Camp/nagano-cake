@@ -1,5 +1,5 @@
 <div class="container">
-    <%= link_to image_tag("naganocake.jpg"), root_path, data: {"turbolinks" => false} %>
+    <%= link_to image_tag("nagano.png"), root_path, data: {"turbolinks" => false} %>
 
 
     <!--＜顧客がサインインした場合＞-->
@@ -7,13 +7,13 @@
     <span>ようこそ！<%= current_customer.last_name + current_customer.first_name %>さん</span>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <%= link_to "マイページ", mypage_path, class: "nav-link" %>
+          <%= link_to "マイページ",mypage_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%#= link_to "商品一覧", items_path, class: "nav-link" %>
+          <%= link_to "商品一覧", public_items_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%#= link_to "カート", cart_items_path, class: "nav-link" %>
+          <%= link_to "カート", class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>

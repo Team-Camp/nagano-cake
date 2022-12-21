@@ -6,14 +6,16 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address.params)
+    @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
 
     if @address.save
       # フラッシュメッセージを定義
       flash[:notice] = "商品は新規登録されました"
       # showページにリダイレクト
-      redirect_to public_addresses_path
+      redirect_to addresses_path
     else
+      @addresses = current_customer.addresses
       render :index
     end
   end
@@ -28,7 +30,7 @@ class Public::AddressesController < ApplicationController
     if @address.update(address_params)
       # フラッシュメッセージを設定
       flash[:notice] = "商品は編集されました"
-      redirect_to public_addresses_path
+      redirect_to addresses_path
     else
       render :edit
     end
@@ -37,7 +39,7 @@ class Public::AddressesController < ApplicationController
   def destroy
     address = Address.find(params[:id])
     address.destroy #任意のデータを削除
-    redirect_to public_addresses_path #indexページへリダイレクト
+    redirect_to addresses_path #indexページへリダイレクト
   end
 
   private

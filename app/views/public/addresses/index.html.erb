@@ -7,6 +7,8 @@
   </ul>
 <% end %>
 
+<%= flash[:notice] %>
+
 <h1>配送先登録/一覧</h1>
 <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
   <table class="table">
@@ -32,9 +34,9 @@
   </table>
 <% end %>
 
-<table class ="table" ,border="1">
+<table border="1" style="border-collapse: collapse",class ="table">
     <thread>
-      <tr>
+      <tr bgcolor="silver">
         <td>郵便番号</td>
         <td>住所</td>
         <td>宛名</td>
@@ -55,6 +57,4 @@
         </tr>
       <% end %>
     </tbody>
-
-
 </table>

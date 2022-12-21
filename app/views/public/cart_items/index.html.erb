@@ -4,18 +4,35 @@
 　　買い物を続けるボタンのパス変更, パスの確認, %>
 <h3>ショッピングカート</h3>
 
-
 <%# ショッピングカートの右側の表示機能 %>
 <%= link_to 'カートを空にする', public_cart_items_path, class: "btn btn-success" %>
 
-<%# ショッピングカートの内の表示機能 %>
-<%# 商品名の中のものは繰り返し処理にて表示 %>
-<td><%# @cart_items.each do |cart_item| %>
-<%= link_to '変更', public_cart_items_path, class: "btn btn-success" %>
-<%= link_to '削除する', public_cart_items_path, class: "btn btn-success" %>
-<%# end %>
-</td>
+ <main>
+  <table class="table">
+   <%# 商品名,単価,数量,小計の繰り返し処理 %>
+   <th>商品名</th>
+   <td><% @cart_items.each do |cart_item| %></td>
 
+    <th>単価（税込）</th>
+    <td><% @prices.each do |price| %></td>
+
+    <th>数量</th>
+    <td><% @amounts.each do |amount| %></td>
+    <%= link_to '変更', public_cart_items_path, class: "btn btn-success" %>
+
+    <th>小計</th>
+    <td><% @prices.each do |price| %></td>
+    <th><%= link_to '削除する', public_cart_items_path, class: "btn btn-success" %></th>
+　 <tbody>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>
+   </tbody>
+  </table>
+
+<th>合計金額</th>
+<%# 単価（税込）合計金額の記載 %>
 
 <%# ショッピングカート真ん中部分の表示機能 %>
 <%= link_to '買い物を続ける', root_path, class: "btn btn-success" %>

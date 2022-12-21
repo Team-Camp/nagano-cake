@@ -1,11 +1,11 @@
 class Admin::OrdersController < ApplicationController
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:order_id])
   end
 
   def update
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:order_id])
 
     if @order.update(order_params)
       # フラッシュメッセージを設定

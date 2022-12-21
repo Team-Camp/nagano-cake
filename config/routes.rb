@@ -44,7 +44,9 @@ get '/about' => 'public/homes#about'
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
   resources :items, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述
-  resources :orders, only: [:show, :update]
+  resources :orders, only: [:show, :update] do
+    resources :order_details, only: [:update] #ネストしてます
+  end
  end
 
 

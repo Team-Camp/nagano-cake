@@ -1,5 +1,8 @@
 class Public::AddressesController < ApplicationController
 
+   # ログイン中でないと使えない機能を指定
+  before_action :authenticate_customer!
+
   def index
     @address = Address.new
     @addresses = current_customer.addresses

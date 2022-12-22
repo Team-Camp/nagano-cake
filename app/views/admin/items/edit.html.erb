@@ -6,7 +6,10 @@
     <% end %>
   </ul>
 <% end %>
-
+<div class="container">
+  <div class="row-lg-10">
+    <h1>商品編集</h1>
+    <div class="col-10 offset-md-1">
 <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
 
   <table class="table">
@@ -17,19 +20,19 @@
       </tr>
       <tr>
         <td>商品名</td>
-        <td><%= f.text_field :name %></td>
+        <td><%= f.text_field :name,size:"40" %></td>
       </tr>
       <tr>
         <td>商品説明</td>
-        <td><%= f.text_area :introduction %></td>
+        <td><%= f.text_area :introduction ,class:'form-controll',size:"40x7"%></td>
       </tr>
       <tr>
         <td>ジャンル</td>
-        <td><%= f.collection_select :genre_id, Genre.all, :id, :name %> </td>
+        <td><%= f.collection_select :genre_id, Genre.all, :id, :name%> </td>
       </tr>
       <tr>
         <td>税抜価格</td>
-        <td><%= f.text_field :price %>円</td>
+        <td><%= f.text_field :price,size:"40" %>円</td>
       </tr>
       <tr>
         <td>販売ステータス</td>
@@ -37,9 +40,13 @@
       </tr>
     </tbody>
   </table>
-  <div class="actions">
-  <%= f.submit "変更を保存" %>
-  </div>
+
+
+<div class="col text-center">
+  <%= f.submit "　変更を保存　",class:"btn btn-success center-block"  %>
+</div>
 <% end %>
 
-
+      </div>
+  </div>
+</div>

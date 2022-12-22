@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-
+  
  def new
    @order = Order.new
    @addresses = current_customer.addresses.all
@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
   @order_details.save
  end
   current_customer.cart_items.destroy_all
-  redirect_to complete_public_orders_path
+  redirect_to complete_orders_path
  end
 
  def index

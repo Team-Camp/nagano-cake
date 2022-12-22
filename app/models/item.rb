@@ -11,4 +11,5 @@ class Item < ApplicationRecord
 
   # genreに対して多対１の記述
   belongs_to :genre
+  has_many :order_details, dependent: :destroy
 end

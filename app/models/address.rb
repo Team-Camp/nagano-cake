@@ -8,4 +8,9 @@ class Address < ApplicationRecord
 
   # customerとaddressは1対多の関係
   belongs_to :customer
+  
+  def address_display
+  '〒' + postal_code + ' ' + address + ' ' + name
+  end
+  
 end

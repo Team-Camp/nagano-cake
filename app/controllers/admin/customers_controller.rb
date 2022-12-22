@@ -1,8 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
-#管理者はログインしなければ情報の確認、編集、保存等ができない。
-#一旦はコメントアウトにしておきます。
-#before_action :authenticate_admin!
+#管理者でログインしていない場合、ログイン画面へ遷移。
+before_action :authenticate_admin!
 
 def index
  @admin_customers = Customer.all.page(params[:page])
@@ -32,6 +31,6 @@ end
 
  private
   def admin_customer_params
-   params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :email)
+   params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :email, :is_deleted)
   end
 end

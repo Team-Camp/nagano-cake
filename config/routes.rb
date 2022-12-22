@@ -19,10 +19,6 @@ namespace :admin do
   resources:customers, only: [:index, :show, :edit, :update]
 end
 
-
-  #devise_for :users
-
-
 # 顧客のマイページ、編集画面、退会画面
   scope module: :public do
     get 'customers/mypage' => 'customers#show', as: 'mypage'
@@ -30,12 +26,11 @@ end
     get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/information' => 'customers#update'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
+
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
     resources :cart_items, only:[:index, :update, :destroy, :create] #カート内商品等の記載（濱岡）
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
   end
-
-
 
 
 
@@ -51,9 +46,10 @@ get '/about' => 'public/homes#about'
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
   resources :items, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述
+  resources :orders, only: [:show, :update] do
+    resources :order_details, only: [:update] #ネストしてます
+  end
  end
-
-
 
 
 #get '/admin/genres' => 'admin/genres#index'
@@ -69,7 +65,6 @@ get '/about' => 'public/homes#about'
      end
    end
  end
-
 
 
 end

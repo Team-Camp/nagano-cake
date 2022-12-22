@@ -10,7 +10,8 @@ class Public::CartItemsController < ApplicationController
 
 #カート内アイテムの更新
  def update
-  if @cart_items.update(amount: params[:amount].to_i)
+  @cart_item = CartItem.find(params[:id])
+  if @cart_item.update(amount: params[:cart_item][:amount].to_i)
    flash[:notice] = 'カート内商品の更新に成功しました。'
   else
    flash[:alert] = 'カート内商品の更新に失敗しました'

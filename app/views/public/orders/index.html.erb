@@ -1,6 +1,6 @@
-<h2>注文履歴一覧</h2>
+<h4>注文履歴一覧</h4>
 
-<table>
+<table class= 'table-hover'>
   <tr>
      <th>注文日</th>
      <th>配送先</th>
@@ -11,7 +11,7 @@
   </tr>
      <% @orders.each do |order| %>
       <tr>
-        <td><%= order.created_at %></td>
+        <td><%= l order.created_at %></td>
         <td>〒<%= order.customer.postal_code %>
               <%= order.customer.address %><br>
               <%= order.customer.last_name %><%= order.customer.first_name %>

@@ -16,7 +16,7 @@ class Public::CartItemsController < ApplicationController
   else
    flash[:alert] = 'カート内商品の更新に失敗しました'
   end
-  redirect_to public_cart_items_path
+  redirect_to cart_items_path
  end
 
 #カート内アイテムの一部削除
@@ -27,7 +27,7 @@ class Public::CartItemsController < ApplicationController
   else
    flash[:alert] = '対象商品の削除に失敗しました。'
   end
-  redirect_to public_cart_items_path
+  redirect_to cart_items_path
  end
 
  def destroy_all
@@ -37,7 +37,7 @@ class Public::CartItemsController < ApplicationController
   else
    flash[:alert] = 'カート内の全ての商品の削除に失敗しました。'
   end
-  redirect_to public_cart_items_path
+  redirect_to cart_items_path
  end
 
  def create
@@ -46,12 +46,12 @@ class Public::CartItemsController < ApplicationController
   cart_item.amount += params[:amount].to_i
   cart_item.update(amount: cart_item.amount)
   flash[:notice] = '商品が追加されました。'
-  redirect_to public_cart_items_path
+  redirect_to cart_items_path
   else
    cart_item = current_customer.cart_items.new(cart_item_params)
    cart_item.save
    flash[:notice] = '商品の追加に成功しました。'
-   redirect_to public_cart_items_path
+   redirect_to cart_items_path
   end
  end
 

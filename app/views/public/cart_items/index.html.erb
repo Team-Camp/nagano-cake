@@ -24,7 +24,8 @@
      <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
      <%= form_with model:[cart_item], url: cart_item_path(cart_item) do |f| %>
 
-     <td><%= f.select :amount, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9]], {:prompt => "個数選択"} %>
+     <td><%#= f.select :amount, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10', 10]], {:prompt => "個数選択"} %>
+         <%= f.select :amount,(1..20).to_a, {:prompt => "個数選択"}, :required => true %>
          <%= f.submit "変更", class: "btn btn-success" %>
      </td>
    <% end %>

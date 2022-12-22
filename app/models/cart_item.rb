@@ -5,7 +5,7 @@ class CartItem < ApplicationRecord
 
  #カート内の商品合計に利用
  def sum_of_price
-  item.price * amount
+  item.with_tax_price * amount
  end
 
 end

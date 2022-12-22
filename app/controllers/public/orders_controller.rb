@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  
+
  def new
    @order = Order.new
    @addresses = current_customer.addresses.all
@@ -36,14 +36,16 @@ class Public::OrdersController < ApplicationController
  end
 
  def create
-  
-  @order = Order.new(order_params)
-  
-  @order.customer_id = current_customer.id
-  @order.save
 
-  current_customer.cart_items.each do |cart_item|
-  @order_details = OrderDetails.new
+  @order = Order.new(order_params)
+
+  @order.customer_id = current_customer.id
+  @order.status = "wait_payment"
+  @order.save
+  @cart_items = current_customer.cart_items.all
+
+  @cart_items.each do |cart_item|
+  @order_details = OrderDetail.new
   @order_details.order_id = @order.id
   @order_details.item_id = cart_item.item_id
   @order_details.amount = cart_item.amount
@@ -65,6 +67,6 @@ class Public::OrdersController < ApplicationController
 
 private
  def order_params
-  params.require(:order).permit(:shipping_cost, :payment_method, :name, :address, :postal_code, :customer_id, :total_payment, :status)
+  params.require(:order).permit(:shipping_cost, :payment_method, :name, :address, :postal_code, :customer_id, :total_payment, :status, :image)
  end
 end

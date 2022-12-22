@@ -28,6 +28,8 @@ end
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
 
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
+    resources :cart_items, only:[:index, :update, :destroy, :create] #カート内商品等の記載（濱岡）
+    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
   end
 
 
@@ -35,8 +37,6 @@ end
 # 商品一覧
   namespace :public do
     resources :items, only: [:index, :show]
-    resources :cart_items, only:[:index, :update, :destroy, :create] #カート内商品等の記載（濱岡）
-    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,23 +1,23 @@
-<!--ジャンル検索-->
-<div class="offset-1 col-10">
-  <div class="row d-flex aline-items-center">
-    <strong class="red-border px-3 pb-1">ジャンル検索</strong>
-  </div>
-  <% @genres.each do |genre| %>
-    <%= link_to admin_genres_path(genre) do %>
-      <%= genre.name %>
-    <% end %>
-  <% end %>
-</div><br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <!--ジャンル検索-->
+      <%= render 'genrevar', genres: @genres %>
+    </div>
+  <div class="col-xs-10">
 
 
 <!--一覧部分-->
-<p>
-  商品一覧(全<%= @items.count %>件)
-</p> <br>
-<% @items.each do |item| %>
-  <p><%= image_tag item.image, size:"200x200" %></p>
-  <p><%= link_to item.name, public_item_path(item)%></p>
-  <p><%= item.price %>円</p>
-<% end %>
+  <p>
+    商品一覧(全<%= @items.count %>件)
+  </p> 
+  <% @items.each do |item| %>
+  <div class="col-xs-3 text-center ">
+    <p><%= image_tag item.image, size:"200x200" %></p>
+    <p><%= link_to item.name, public_item_path(item)%></p>
+    <p><%= item.price %>円</p>
+  </div>  
+  <% end %>
 
+<%= paginate @item %>
+</div>

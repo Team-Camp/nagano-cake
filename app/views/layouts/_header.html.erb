@@ -1,19 +1,21 @@
-<div class="container">
-    <%= link_to image_tag("nagano.png"), root_path, data: {"turbolinks" => false} %>
+<header>
+  <nav class="navbar navbar-light mb-2" style="background-color:#FFFFCC;">
+    <div class="container">
+      <span><%= link_to image_tag("nagano.png"), root_path, data: {"turbolinks" => false} %></span>
 
 
-    <!--＜顧客がサインインした場合＞-->
+    <!--顧客がサインインした場合-->
     <% if customer_signed_in? %>
     <span>ようこそ！<%= current_customer.last_name + current_customer.first_name %>さん</span>
-      <ul class="navbar-nav">
+      <ul class="nav justify-content-end">
         <li class="nav-item">
-          <%= link_to "マイページ",mypage_path, class: "nav-link" %>
+          <%= link_to "マイページ", mypage_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "商品一覧", public_items_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "カート", class: "nav-link" %>
+          <%= link_to "カート", public_cart_items_path,class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
@@ -59,6 +61,6 @@
         </li>
       </ul>
     <% end %>
-  <header>
-</div>
-
+    </div>
+  </nav>
+</header>

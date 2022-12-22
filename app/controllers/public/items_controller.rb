@@ -1,8 +1,17 @@
 class Public::ItemsController < ApplicationController
+  
+  before_action :authenticate_customer!, except: [:index,:show]
+  
+  
   def index
     @genres = Genre.all
-    @items = Item.all
-    @items = Item.page(params[:page])
+    @items = Item.all 
+    @item = Item.page(params[:page])
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      @items = @genre.items
+      # @item = Item.page(params[:page])
+    end
   end
 
   def show

@@ -11,27 +11,27 @@
  <main>
   <table class="table">
    <thead>
-   <th>商品名</th>
-   <th>単価（税込）</th>
-   <th>数量</th>
-   <th>小計</th>
+   <td>商品名</td>
+   <td>単価（税込）</td>
+   <td>数量</td>
+   <td>小計</td>
    </thead>
 
 <tbody>
-   <% @cart_items.each do |cart_item| %>
-   <td><%= cart_item.item.name %></td>
-   <td><%= cart_item.item.with_tax_price %></td>
-   <div><%= form_with model:[cart_item], url: public_cart_item_path(cart_item) do |f| %></div>
-   <td>
+ <% @cart_items.each do |cart_item| %>
+ <tr>
+ <td><%= cart_item.item.name %></td>
+ <td><%= cart_item.item.with_tax_price %></td>
+ <td><%= form_with model:[cart_item], url: public_cart_item_path(cart_item) do |f| %></td>
+ <td>
    <%= f.select :amount, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9]], {:prompt => "個数選択"} %>
    <%= f.submit "変更", class: "btn btn-success" %>
    </td>
    <% end %>
    <td><%= cart_item.item.with_tax_price %></td>
-
-
-    <th><%= link_to '削除する', "/public/cart_items/#{cart_item.id}", method: :delete, class: "btn btn-danger" %></th>
+   <td><%= link_to '削除する', "/public/cart_items/#{cart_item.id}", method: :delete, class: "btn btn-danger" %></td>
     <% end %>
+ </tr>
 </tbody>
 
   </table>

@@ -15,7 +15,7 @@
           <%= @item.name %>
           <%= @item.introduction %>
           ¥ <%= ((@item.price*1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)
-          
+
           <!--個数選択-->
           <%= form_with model: @cart_item, url: cart_items_path do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
@@ -23,7 +23,7 @@
           <%= f.submit "カートに入れる" %>
           <% end %>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </div>

@@ -19,12 +19,15 @@
   <tbody>
    <% @cart_items.each do |cart_item| %>
     <tr>
-     <td><%= cart_item.item.name %></td>
+     <td>
+      <%= image_tag cart_item.item.image, size:"50x50" %>
+      <%= cart_item.item.name %>
+     </td>
 
      <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
      <%= form_with model:[cart_item], url: cart_item_path(cart_item) do |f| %>
 
-     <td><%= f.select :amount, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9]], {:prompt => "個数選択"} %>
+     <td><%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"}, :required => true %>
          <%= f.submit "変更", class: "btn btn-success" %>
      </td>
    <% end %>
@@ -41,4 +44,4 @@
 <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
 
 <%# ショッピングカート下部分の表示機能, public/ordersを作成してもらったあとにパス変更！%>
-<%= link_to '情報入力に進む', confirm_public_orders_path, class: "btn btn-success" %>
+<%#= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>

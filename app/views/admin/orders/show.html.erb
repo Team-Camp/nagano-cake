@@ -31,3 +31,29 @@
   </tbody>
 </table>
 
+
+<table class="table">
+  <thread>
+    <tr>
+      <td>商品名</td>
+      <td>単価（税込）</td>
+      <td>数量</td>
+      <td>小計</td>
+      <td>制作ステータス</td>
+    </tr>
+  </thread>
+  <tbody>
+    <tr>
+      <td><%= @order_detail.item.name %></td>
+      <td><%= (@order_detail.item.price + @order_detail.item.price*0.1) %></td>
+      <td><%= @order_detail.item.order_detail.amount %></td>
+      <td><%= @order_detail.making_status %></td>
+      <td>
+        <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+          <%= f.select :status, Order.statuses.keys,{},{}  %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

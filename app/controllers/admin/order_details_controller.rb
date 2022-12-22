@@ -8,7 +8,8 @@ class Admin::OrderDetailsController < ApplicationController
       flash[:notice] = "制作ステータスは更新されました"
       redirect_to admin_order_path
     else
-      render :show
+      flash[:notice] = "制作ステータスの更新に失敗しました"
+      redirect_to admin_order_path
     end
   end
 

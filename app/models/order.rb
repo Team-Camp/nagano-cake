@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :customer
+
+  # 中間テーブル（注文詳細）とのアソシエーションの記述
   has_many :order_details
   has_many :items, through: :order_details
 

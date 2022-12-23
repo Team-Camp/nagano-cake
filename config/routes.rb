@@ -51,6 +51,9 @@ end
 root to: 'public/homes#top'
 get '/about' => 'public/homes#about'
 
+# 会員側の注文履歴
+get '/admin' => 'admin/homes#top'
+
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
   resources :items, only: [:index,:new,:create,:show,:edit,:update] # 商品一覧・・・等の記述

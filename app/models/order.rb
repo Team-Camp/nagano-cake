@@ -18,4 +18,9 @@ class Order < ApplicationRecord
     "credit_card":0,
     "transfer":1
   }
+
+  #商品の合計合計金額に利用
+  def sum_of_price
+    item.with_tax_price * amount
+  end
 end

@@ -2,6 +2,8 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    # @prices = @order.order_details.inject(0) { |sum, item| sum + item.sum_of_price}
+    # @prices = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def update

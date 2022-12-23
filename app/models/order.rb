@@ -11,7 +11,7 @@ class Order < ApplicationRecord
     "confirm_payment":1,
     "making":2,
     "preparing_ship":3,
-    "hinish_prepare":4
+    "finish_prepare":4
   }
 
   enum payment_method: {

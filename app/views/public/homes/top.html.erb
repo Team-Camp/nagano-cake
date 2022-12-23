@@ -27,14 +27,17 @@
 
 
 <!--一覧部分-->
-<table>
+
   <tr><h3 style="margin: 20px 0;">新着商品</h3></tr>
+  <div class="container">
+  <div class="row">
   <tr><% @items.each do |item| %></tr>
-  <div class="col-xs-3 text-center ">
-    <%= image_tag item.image, size:"200x200" %>
+    <%= image_tag item.image, size:"100x100" %>
     <div><%= link_to item.name, public_item_path(item) %></div>
     <div>¥<%= item.price.to_s(:delimited) %></div>
-  <% end %>
-  </div>
-</table>
+    <% end %>
+    </div>
+    </div>
+
+
 <%= link_to "全ての商品を見る", public_items_path %>

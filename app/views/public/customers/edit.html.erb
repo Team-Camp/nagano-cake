@@ -1,7 +1,5 @@
 <div class="container">
-  <h1>会員情報編集</h1>
-
-
+  <h2>会員情報編集</h2>
 <%= form_with model: @customer, url: customers_information_path, method: :PATCH do |f| %>
 <table>
   <tr>
@@ -46,8 +44,8 @@
 </table>
 
 <p>
-  <%= f.submit :"編集内容を保存" %>
-  <%= link_to "退会する", unsubscribe_path(@customer), class:"btn btn-sm btn-success" %>
+  <%= f.submit :"編集内容を保存",class:"btn btn-sm btn-success"%>
+  <%= link_to "退会する", unsubscribe_path(@customer), class:"btn btn-danger" %>
 </p>
 <% end %>
 

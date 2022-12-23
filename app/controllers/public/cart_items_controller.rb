@@ -41,23 +41,36 @@ class Public::CartItemsController < ApplicationController
  end
 
  def create
-  if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-  cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-  cart_item.amount += params[:amount].to_i
-  cart_item.update(amount: cart_item.amount)
-  flash[:notice] = '商品が追加されました。'
-  redirect_to cart_items_path
+  @current_cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+  if @current_cart_item.present?
+   # カート内の個数をフォームから送られた個数分追加する処理
+    new_amount = @current_cart_item.amount + params[:cart_item][:amount].to_i
+    @current_cart_item.update(amount: new_amount)
+    flash[:notice] = "商品の個数が変更されました！"
+    redirect_to cart_items_path
   else
-   cart_item = current_customer.cart_items.new(cart_item_params)
-   cart_item.save
-   flash[:notice] = '商品の追加に成功しました。'
+   # カートモデルにレコードを新規作成する
+   cart_item = CartItem.new(cart_item_params)
+   cart_item.customer_id = current_customer.id
+   if cart_item.save
+   flash[:notice] = "カートに商品が追加されました！"
    redirect_to cart_items_path
+  else
+   flash[:notice] = "追加に失敗しました"
+   redirect_to public_item_path(params[:cart_item][:item_id])
+  end
   end
  end
+ 
+ 
 
-   private
-  def cart_item_params
-   params.require(:cart_item).permit(:amount, :item_id)
-  end
+
+
+
+  private
+
+   def cart_item_params
+    params.require(:cart_item).permit(:amount, :item_id)
+   end
 
 end

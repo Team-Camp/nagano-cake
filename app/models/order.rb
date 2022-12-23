@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   # 中間テーブル（注文詳細）とのアソシエーションの記述
   has_many :order_details
   has_many :items, through: :order_details
+  has_one_attached :image
 
   enum status: {
     "wait_payment":0,

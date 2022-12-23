@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   # 中間テーブル（注文詳細）とのアソシエーションの記述
   has_many :order_details
   has_many :orders, through: :order_details
-
+  has_many :cart_items
 
   # バリデーション
   validates :genre_id,presence: true

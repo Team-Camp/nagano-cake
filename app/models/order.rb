@@ -11,11 +11,16 @@ class Order < ApplicationRecord
     "confirm_payment":1,
     "making":2,
     "preparing_ship":3,
-    "hinish_prepare":4
+    "finish_prepare":4
   }
 
   enum payment_method: {
     "credit_card":0,
     "transfer":1
   }
+
+  #商品の合計合計金額に利用
+  def sum_of_price
+    item.with_tax_price * amount
+  end
 end

@@ -1,7 +1,7 @@
 <h4>注文情報入力</h4>
 
 <h4>支払い方法</h4>
-<%= form_with model: @order, url: confirm_public_orders_path, method: :post, local: true do |f| %>
+<%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
 
 <%= f.radio_button :payment_method, Order.payment_methods.key(0),checked: "checked" %>
 <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>

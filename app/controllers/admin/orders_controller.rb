@@ -2,8 +2,6 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # @prices = @order.order_details.inject(0) { |sum, item| sum + item.sum_of_price}
-    # @prices = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def update
@@ -12,6 +10,16 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       # フラッシュメッセージを設定
       flash[:notice] = "注文ステータスは更新されました"
+
+      # 注文ステータスが「入金確認」になったら、紐づく制作ステータスをすべて「制作待ち」にする
+      if @order.status == "confirm_payment"
+        @order.order_details.each do |order_detail|
+          if order_detail.making_status == "cannot_start"
+            order_detail.update(making_status: "waiting_for_production")
+          end
+        end
+      end
+
       redirect_to admin_order_path
     else
       flash[:notice] = "注文ステータスの更新に失敗しました"

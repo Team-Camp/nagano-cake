@@ -1,4 +1,5 @@
 <%= flash[:notice] %>
+<% @sum = 0%>
 
 <h1>注文情報確認</h1>
 
@@ -32,7 +33,6 @@
   </tbody>
 </table>
 
-
 <table class="table">
   <thread>
     <tr>
@@ -57,6 +57,7 @@
           <% end %>
         </td>
       </tr>
+      <% @sum += (order_detail.item.price + order_detail.item.price*0.1).floor*order_detail.amount %>
     <% end %>
   </tbody>
 </table>
@@ -66,7 +67,15 @@
   <tbody>
     <tr>
       <td>商品合計</td>
-      <td><%#= @prices.to_s(:delimited) %>円</td>
+      <td><%= @sum.to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+      <td>送料</td>
+      <td>800円</td>
+    </tr>
+    <tr>
+      <td>請求金額合計</td>
+      <td><%= (@sum+800).to_s(:delimited) %>円</td>
     </tr>
   </tbody>
 </table>

@@ -2,11 +2,20 @@
 <%#課題事項：会員詳細の背景色変更、履歴一覧のパス変更
    行間、ボタンの色変更%>
 
-<%#会員No.1 大阪太郎さんのデータが映ることを確認済み%>
-<p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細</p>
+
+<div class="container">
+  <div class="row-lg-10">
+    <div class="col-11 offset-md-1">
+      <div class="bg-light text-center">
+       <%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員詳細
+      </div>
+    </div>
+
 
  <table class="table">
+  <div class="row-lg-11">
   <tbody>
+   <div class="row-lg-11">
    <tr></tr>
    <%# 対象ユーザーの会員IDを記載 %>
     <tr>
@@ -74,6 +83,7 @@
     <% end %>
      </th>
     </tr>
+    </div>
    </tbody>
 </table>
 

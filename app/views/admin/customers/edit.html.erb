@@ -1,6 +1,12 @@
 
 <%#課題事項：ステータスの有効or無効にボタンの色をつける %>
+<div class="container">
+  <div class="row-lg-10">
+    <div class="col-11 offset-md-1">
+      <div class="bg-light text-center">
 <p><%= @admin_customer.last_name + @admin_customer.first_name %>さんの会員情報編集</p>
+</div>
+</div>
 
 <%= form_with model: @admin_customer, url: admin_customer_path, method: :patch do |f| %>
 <table class="table">

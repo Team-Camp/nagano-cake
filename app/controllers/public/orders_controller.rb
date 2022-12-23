@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
     @order.address = @address.address
     @order.name = @address.name
 
-   elsif params[:order][:select_address] = "2"
+   elsif params[:order][:select_address] =="2"
     @order.postal_code = params[:order][:postal_code]
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
@@ -43,9 +43,8 @@ class Public::OrdersController < ApplicationController
 
   @order.customer_id = current_customer.id
   @order.status = "wait_payment"
-  @order.save
+  if @order.save
   @cart_items = current_customer.cart_items.all
-
   @cart_items.each do |cart_item|
   @order_details = OrderDetail.new
   @order_details.order_id = @order.id
@@ -53,9 +52,15 @@ class Public::OrdersController < ApplicationController
   @order_details.amount = cart_item.amount
   @order_details.price = (cart_item.item.price*1.1).floor
   @order_details.save
- end
-  current_customer.cart_items.destroy_all
-  redirect_to complete_orders_path
+  end
+   current_customer.cart_items.destroy_all
+   redirect_to complete_orders_path
+  else
+   render :new
+  end
+  
+ 
+  
  end
 
  def index

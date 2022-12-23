@@ -30,6 +30,14 @@ end
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
     resources :cart_items, only:[:index, :update, :destroy, :create] #カート内商品等の記載（濱岡）
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
+    
+    
+    resources :orders, only: [:new,:index,:create,:show] do
+     collection do
+      post 'confirm'
+      get 'complete'
+     end
+   end
   end
 
 
@@ -42,6 +50,9 @@ end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 root to: 'public/homes#top'
 get '/about' => 'public/homes#about'
+
+# 会員側の注文履歴
+get '/admin' => 'admin/homes#top'
 
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
@@ -57,14 +68,6 @@ get '/about' => 'public/homes#about'
 #get '/admin/genres/:id/edit' => 'admin/genres#edit'
 #patch '/admin/genres/:id' => 'admin/genres#update'
 
- namespace :public do
-   resources :orders, only: [:new,:index,:create,:show] do
-     collection do
-      post 'confirm'
-      get 'complete'
-     end
-   end
- end
 
 
 end

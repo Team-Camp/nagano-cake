@@ -13,18 +13,27 @@
             <!--<th>注文ステータス</th>-->
           </tr>
         </thead>
+        
 
         <tbody>
-          <% @admin_customers.each do |order| %>
+          <% @orders.each do |order| %>
+          <% @sum = 0 %>
             <tr>
               <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order) %></td>
-              <td><%= order.last_name + "　" + order.first_name %></td>
+              <td><%= order.customer.last_name + "　" + order.customer.first_name %></td>
             　<!--エラーが出るので一旦、コメントアウトしてます！-->
-              <td><%#= order.order_details.sum(:amount) %></td>
-              <td><%#= order.order_status %></td>
+            　<% order.order_details.each do |f| %>
+              <%#= order.order_details.sum(:amount) %>
+              <% @sum += f.amount %>
+              <% end %>
+              <td><%= @sum %></td>
+              <td><%#= order.status %></td>
             </tr>
             <% end %>
-            <%#= paginate @orders %>
+            
+            
+            
+             <td><%= paginate @orders %></td>
         </tbody>
       </table>
     </div>

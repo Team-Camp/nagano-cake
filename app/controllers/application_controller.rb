@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     new_admin_session_path
   end
   
+  def after_sign_in_path_for(resource) 
+    admin_path
+  end
+  
   protected
 
   def configure_permitted_parameters

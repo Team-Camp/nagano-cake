@@ -1,0 +1,10 @@
+
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 300px; /* 高さ300px */
+  background-image: url(vendor/nagano.jpg);}
+
+.main-visual-content {
+  width: 350px; /* 横幅350px */
+  height: 300px; /* 親の高さに揃える */
+}

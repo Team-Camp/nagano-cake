@@ -4,9 +4,9 @@
      <h4>注文情報確認</h4>
      </div>
      </div>
-     
+
 <div class="row">
-    <div class="col-7 ">
+    <div class="col-7">
      <table class="table table-bordered border-dark">
       <tr class="table-secondary">
        <th>商品名</th>
@@ -49,18 +49,18 @@
       </table>
      </div>
      </div>
-     
+
 <div class="row">
-    <div class="col-11">
+    <div class="col-7">
       <table class="table table-borderless">
-       <tr>
+       <tr class="border-bottom">
         <th class="clo-2">支払方法</th>
-        <td class="col-9"><%= @order.payment_method_i18n %></td>
+        <td class="col-5"><%= @order.payment_method_i18n %></td>
        </tr>
-       <tr>
+       <tr class="border-bottom">
         <th class="col-2">お届け先</th>
-        <td class="col-9">
-         <%= @order.postal_code %>
+        <td class="col-5">
+         〒<%= @order.postal_code %>
          <%= @order.address %><br>
          <%= @order.name %>
         </td>
@@ -68,7 +68,7 @@
       </table>
     </div>
 </div>
-    
+
 <div class="row justify-content-center">
    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
       <%= f.hidden_field :customer_id %>

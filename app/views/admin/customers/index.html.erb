@@ -1,35 +1,42 @@
 
-<%# if @admin.errors.any? %>
-  <%#= @admin.errors.count #コメントアウト→errors prohibited this obj from being saved:%>
-  <ul>
-   <%# @admin.errors.full_messages.each do |message| %>
-    <li><%#= message %></li>
-   <%# end %>
-  </ul>
-<%# end %>
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <h2>会員一覧</h2>
+    </div>
+    <div class="col-1">
+  </div>
+ </div>
 
- <main>
-  <table class="table">
-   <h4>会員一覧</h4>
-    <th>会員ID</th>
-    <th>氏名</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-
-    <%# 顧客一覧情報の繰り返し処理 %>
-    <td><% @admin_customers.each do |admin_customer| %>
-　 <tbody>
-    <th><%= admin_customer.id %></th>
-    <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
-    <th><%= admin_customer.email %></th>
-    <th>
-    <% if admin_customer.is_deleted == false %>有効
-    <% elsif admin_customer.is_deleted == true %>退会
-    <% end %>
-    </th>
-
-    </td>
+  <div class="row-lg-10">
+    <table class="table">
+      <div class=container3>
+      <thead>
+       <tr bgcolor="silver">
+         <th>会員ID</th>
+         <th>氏名</th>
+         <th>メールアドレス</th>
+         <th>ステータス</th>
+        </tr>
+      </thead>
+     <tbody>
+     <%# 顧客一覧情報の繰り返し処理 %>
+      <% @admin_customers.each do |admin_customer| %>
+　     <tr>
+        <th><%= admin_customer.id %></th>
+        <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
+        <th><%= admin_customer.email %></th>
+        <th>
+            <% if admin_customer.is_deleted == false %>有効
+            <% elsif admin_customer.is_deleted == true %>退会
+            <% end %>
+            <% end %>
+        </th>
+       </tr>
+    <tr></tr>
+    </div>
    </tbody>
   </table>
- <% end %>
- <%= paginate @admin_customers %>
+ <div class="pagination justify-content-center">
+  <%= paginate @admin_customers %>
+ </div>

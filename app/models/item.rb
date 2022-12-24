@@ -20,6 +20,6 @@ class Item < ApplicationRecord
   #税率記載(濱岡)
   #ceilは切り上げ、floorが切り捨て、roundが四捨五入
   def with_tax_price
-  (price * 1.1).ceil
+  (price * 1.1).floor
   end
 end

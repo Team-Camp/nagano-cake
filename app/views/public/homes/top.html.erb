@@ -2,8 +2,10 @@
 <!-- main-visual用のdiv -->
 <div class = "main-visual">
  <div class = "main-visual-content">
+<div class="jumbotron"  style= "background-size:cover;">
+</div>
 
-  <!-- pタグと文字を追加 -->
+
   <p class= "main-visual-text">
   <div>ようこそながのCAKEへ！</div>
   <div>このサイトは、ケーキ販売のECサイトになります。</div>
@@ -37,6 +39,7 @@
     <div><%= item.name %></div>
     <% end %>
     <div>¥<%= item.price.to_s(:delimited) %></div>
+    <% end %>
     <% end %>
     </div>
     </div>

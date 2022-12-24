@@ -13,10 +13,11 @@ class Public::CartItemsController < ApplicationController
   @cart_item = CartItem.find(params[:id])
   if @cart_item.update(amount: params[:cart_item][:amount].to_i)
    flash[:notice] = 'カート内商品の更新に成功しました。'
+   redirect_to cart_items_path
   else
    flash[:alert] = 'カート内商品の更新に失敗しました'
+   redirect_to cart_items_path
   end
-  redirect_to cart_items_path
  end
 
 #カート内アイテムの一部削除

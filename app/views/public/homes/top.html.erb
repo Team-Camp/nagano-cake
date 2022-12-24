@@ -32,8 +32,10 @@
   <div class="container">
   <div class="row">
   <tr><% @items.each do |item| %></tr>
+    <%= link_to public_item_path(item) do %>
     <%= image_tag item.image, size:"100x100" %>
-    <div><%= link_to item.name, public_item_path(item) %></div>
+    <div><%= item.name %></div>
+    <% end %>
     <div>¥<%= item.price.to_s(:delimited) %></div>
     <% end %>
     </div>

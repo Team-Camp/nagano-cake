@@ -5,6 +5,10 @@ class Order < ApplicationRecord
   has_many :order_details
   has_many :items, through: :order_details
   has_one_attached :image
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :total_payment, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 801}
 
   enum status: {
     "wait_payment":0,

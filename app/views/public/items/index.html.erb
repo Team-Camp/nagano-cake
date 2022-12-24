@@ -1,24 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-2">
+    <div class="col-2">
       <!--ジャンル検索-->
       <%= render 'genrevar', genres: @genres %>
     </div>
-<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 
+    <div class="col-10">
+      <!--一覧部分-->
+      <h2 style="margin: 20px 0;">商品一覧(全<%= @count %>件)</h2>
 
-<!--一覧部分-->
-  <h2 style="margin: 20px 0;">商品一覧(全<%= @count %>件)</h2>
-
-  <% @items.each do |item| %>
-    <div class="col-xs-3 text-center ">
-      <% if item.is_active == true %>
-        <p><%= link_to (image_tag item.image, size:"200x200"), public_item_path(item) %></p>
-        <p><%= link_to item.name, public_item_path(item)%></p>
-        <p><%= item.price %>円</p>
-      <% end %>
+      <div class="text-center row">
+        <% @items.each do |item| %>
+          <% if item.is_active == true %>
+            <div class="col-md-3">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.image, size:"200x200"  %>
+                <%= item.name %>
+              <% end %>
+              <br><%= item.price %>円
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-<%#= paginate @item %>
+  </div>
 </div>

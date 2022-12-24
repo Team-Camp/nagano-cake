@@ -8,14 +8,16 @@
 
 
 <!--一覧部分-->
-  <h2 style="margin: 20px 0;">商品一覧(全<%= @items.count %>件)</h2>
+  <h2 style="margin: 20px 0;">商品一覧(全<%= @count %>件)</h2>
 
   <% @items.each do |item| %>
-  <div class="col-xs-3 text-center ">
-    <p><%= link_to (image_tag item.image, size:"200x200"), public_item_path(item) %></p>
-    <p><%= link_to item.name, public_item_path(item)%></p>
-    <p><%= item.price %>円</p>
-  </div>
+    <div class="col-xs-3 text-center ">
+      <% if item.is_active == true %>
+        <p><%= link_to (image_tag item.image, size:"200x200"), public_item_path(item) %></p>
+        <p><%= link_to item.name, public_item_path(item)%></p>
+        <p><%= item.price %>円</p>
+      <% end %>
+    </div>
   <% end %>
 
 <%#= paginate @item %>

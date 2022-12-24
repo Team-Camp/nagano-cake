@@ -6,6 +6,7 @@
   </div>
 
   <table class="table table-bordered border-dark">
+   <thead>
     <tr class="table-secondary">
       <th>注文日</th>
       <th>配送先</th>
@@ -14,6 +15,8 @@
       <th>ステータス</th>
       <th>注文詳細</th>
     </tr>
+   </thead>
+   <tbody>
      <% @orders.each do |order| %>
      <tr>
         <td><%= l order.created_at %></td>
@@ -30,6 +33,7 @@
         <td><%= order.status_i18n %></td>
         <td><%= link_to '表示する', order_path(order), class: "btn btn-primary" %></td>
       </tr>
-  <% end %>
-</table>
+     <% end %>
+   </tbody>
+  </table>
 </div>

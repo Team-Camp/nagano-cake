@@ -34,8 +34,7 @@
   <div class="container">
   <div class="row">
   <tr><% @items.each do |item| %></tr>
-  <% if item.is_active == true %>
-    <%= link_to public_item_path(item) do %>
+    <%= link_to item_path(item) do %>
     <%= image_tag item.image, size:"100x100" %>
     <div><%= item.name %></div>
     <% end %>
@@ -46,4 +45,4 @@
     </div>
 
 
-<%= link_to "全ての商品を見る", public_items_path %>
+<%= link_to "全ての商品を見る", items_path %>

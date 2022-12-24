@@ -31,6 +31,8 @@ end
     resources :cart_items, only:[:index, :update, :destroy, :create] #カート内商品等の記載（濱岡）
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
 
+    resources :items, only: [:index, :show]
+
 
     resources :orders, only: [:new,:index,:create,:show] do
      collection do
@@ -44,7 +46,7 @@ end
 
 # 商品一覧
   namespace :public do
-    resources :items, only: [:index, :show]
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

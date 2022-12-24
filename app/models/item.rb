@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   validates :name,presence: true
   validates :introduction,presence: true
   validates :price,presence: true
-  validates :is_active,presence: true
+  validates :is_active,inclusion: [true, false] #presence: true　にすると、falseをnullと判別してうまくいかない
 
   # genreに対して多対１の記述
   belongs_to :genre

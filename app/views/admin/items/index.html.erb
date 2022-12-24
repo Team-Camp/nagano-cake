@@ -18,7 +18,7 @@
   <div class="row-lg-10">
     <table class="table">
       <thead>
-        <tr bgcolor="silver">
+        <tr class="table-secondary">
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜価格</th>
@@ -35,13 +35,13 @@
                 <%= item.name %>
               <% end %>
             </th>
-            <th><%= item.price %></th>
+            <th><%= item.price.to_s(:delimited) %></th>
             <th><%= item.genre.name %></th>
             <th>
               <% if item.is_active == true %>
-                販売中
+                <p class="text-success font-weight-bold">販売中</p>
               <% else %>
-                販売停止中
+                <p class="text-secondary font-weight-bold">販売停止中</p>
               <% end %>
             </th>
           </tr>

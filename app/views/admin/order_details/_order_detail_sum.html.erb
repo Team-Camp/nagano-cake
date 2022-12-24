@@ -1,0 +1,16 @@
+<table class="table table-borderless">
+  <tbody>
+    <tr>
+      <td class="font-weight-bold">商品合計</td>
+      <td><%= (order.total_payment - order.shipping_cost).to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">送料</td>
+      <td><%= order.shipping_cost.to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">請求金額合計</td>
+      <td class="font-weight-bold"> <%= order.total_payment.to_s(:delimited) %>円 </td>
+    </tr>
+  </tbody>
+</table>

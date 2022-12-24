@@ -4,6 +4,9 @@ class Public::OrdersController < ApplicationController
  def new
    @order = Order.new
    @addresses = current_customer.addresses.all
+   if current_customer.cart_items.exists? == false
+    redirect_to cart_items_path
+   end
  end
 
  def confirm
@@ -25,8 +28,8 @@ class Public::OrdersController < ApplicationController
     @order.name = params[:order][:name]
    else
      render :new
-   
-    
+
+
    end
 
   @cart_items = current_customer.cart_items.all
@@ -58,9 +61,9 @@ class Public::OrdersController < ApplicationController
   else
    render :new
   end
-  
- 
-  
+
+
+
  end
 
  def index

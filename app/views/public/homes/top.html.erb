@@ -2,8 +2,10 @@
 <!-- main-visual用のdiv -->
 <div class = "main-visual">
  <div class = "main-visual-content">
+<div class="jumbotron"  style= "background-size:cover;">
+</div>
 
-  <!-- pタグと文字を追加 -->
+
   <p class= "main-visual-text">
   <div>ようこそながのCAKEへ！</div>
   <div>このサイトは、ケーキ販売のECサイトになります。</div>
@@ -32,11 +34,13 @@
   <div class="container">
   <div class="row">
   <tr><% @items.each do |item| %></tr>
+  <% if item.is_active == true %>
     <%= link_to public_item_path(item) do %>
     <%= image_tag item.image, size:"100x100" %>
     <div><%= item.name %></div>
     <% end %>
     <div>¥<%= item.price.to_s(:delimited) %></div>
+    <% end %>
     <% end %>
     </div>
     </div>

@@ -78,7 +78,7 @@
      <th>会員ステータス</th>
      <th>
      <% @admin_customer.is_deleted %>
-    <% if @admin_customer.is_deleted == false %>有効
+    <% if @admin_customer.is_deleted == false %><p class= "text-success" >有効</p>
     <% elsif @admin_customer.is_deleted == true %>退会
     <% end %>
      </th>
@@ -92,7 +92,4 @@
       <%= link_to '編集する', edit_admin_customer_path, class: "btn btn-success" %>
 
      <%#注文履歴一覧のpathはせいちゃん作成後、再度設定。%>
-      <%= link_to '注文履歴一覧を見る', public_items_path, class: "btn btn-primary" %>
-
-
-
+      <%= link_to '注文履歴一覧を見る', items_path, class: "btn btn-primary" %>

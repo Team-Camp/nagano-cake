@@ -51,15 +51,15 @@
      </div>
      
 <div class="row">
-    <div class="col">
+    <div class="col-11">
       <table class="table table-borderless">
        <tr>
-        <th>支払い方法</th>
-        <td><%= @order.payment_method_i18n %></td>
+        <th class="clo-2">支払方法</th>
+        <td class="col-9"><%= @order.payment_method_i18n %></td>
        </tr>
        <tr>
-        <th>お届け先</th>
-        <td>
+        <th class="col-2">お届け先</th>
+        <td class="col-9">
          <%= @order.postal_code %>
          <%= @order.address %><br>
          <%= @order.name %>

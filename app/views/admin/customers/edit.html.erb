@@ -76,7 +76,7 @@
     <% if @admin_customer.is_deleted == false %>
     <%= f.radio_button :is_deleted, false, checked:true, class:"text-success" %>有効　<%= f.radio_button :is_deleted, true %>退会
     <% else %>
-    <%= f.radio_button :is_deleted, false %>有効　<%= f.radio_button :is_deleted, true, checked:true %>退会
+    <%= f.radio_button :is_deleted, false, class: "text-success" %>有効　<%= f.radio_button :is_deleted, true, checked:true %>退会
     <% end %>
    </th>
   </tr>

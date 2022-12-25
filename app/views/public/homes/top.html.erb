@@ -1,45 +1,47 @@
 
-<!-- main-visual用のdiv -->
-<div class = "main-visual">
- <div class = "main-visual-content">
-<div class="jumbotron"  style= "background-size:cover;">
-</div>
-
-
-  <p class= "main-visual-text">
-  <div>ようこそながのCAKEへ！</div>
-  <div>このサイトは、ケーキ販売のECサイトになります。</div>
-  </p>
-  <p class="main-visual-name">
-  <div>会員ではない方も商品の閲覧はできますが、</div>
-  <div>購入には会員登録が必要になります。</div>
-  </p>
- </div>
-</div>
-
 <div class="container">
-  <div class="row">
-    <div class="col-xs-2">
-      <!--ジャンル検索-->
-      <%= render 'public/items/genrevar', genres: @genres %>
-    </div>
+ <div class="row">
+  <div class="col-md-3">
+   <div class="col-11">
+    <!--ジャンル検索-->
+    <%= render 'public/items/genrevar', genres: @genres %>
    </div>
- </div>
+  </div>
+    <!-- main-visual用のdiv -->
+    <div class="col-md-9">
+     <div class = "main-visual">
+      <div class = "main-visual-content">
+       <div class="jumbotron"  style= "background-size:cover;">
+        <p class="lead">ようこそながのCAKEへ！</p>
+        <p>このサイトは、ケーキ販売のECサイトになります。</p>
+        <div>会員ではない方も商品の閲覧はできますが、</div>
+        <div>購入には会員登録が必要になります。</div>
+       </div>
+      </div>
+     </div>
+    </div>
+  </div>
 
-
-
-<!--一覧部分-->
-
-  <tr><h3 style="margin: 20px 0;">新着商品</h3></tr>
   <div class="container">
   <div class="row">
-  <tr><% @items.each do |item| %></tr>
-    <%= link_to item_path(item) do %>
-    <%= image_tag item.image, size:"100x100" %>
-    <div><%= item.name %></div>
-    <% end %>
+  <div class="col-md-8 offset-md-3">
+  <h3 style="margin: 20px 0;">新着商品</h3>
+  <div class="row">
+  <% @items.each do |item| %>
+   <div class="col-md-3">
+     <%= link_to item_path(item) do %>
+     <%= image_tag item.image, size:"150x150" %>
+     <div><%= item.name %></div>
+     <% end %>
     <div>¥<%= item.price.to_s(:delimited) %></div>
+    </div>
     <% end %>
-    </div>
-    </div>
-<%= link_to "全ての商品を見る", items_path %>
+</div>
+</div>
+</div>
+</div>
+
+<div class="text-right">
+<%= link_to "全ての商品を見る> ", items_path %>
+</div>
+</div>

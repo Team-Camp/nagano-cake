@@ -27,7 +27,7 @@
         <th><%= link_to admin_customer.last_name + admin_customer.first_name, admin_customer_path(admin_customer.id) %></th>
         <th><%= admin_customer.email %></th>
         <th>
-            <% if admin_customer.is_deleted == false %>有効
+            <% if admin_customer.is_deleted == false %><div class= "text-success" >有効</div>
             <% elsif admin_customer.is_deleted == true %>退会
             <% end %>
             <% end %>

@@ -1,45 +1,48 @@
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <!--ジャンル検索-->
+      <%= render 'public/items/genrevar', genres: @genres %>
+    </div>
+
 <!-- main-visual用のdiv -->
 <div class = "main-visual">
  <div class = "main-visual-content">
 <div class="jumbotron"  style= "background-size:cover;">
 </div>
 
-
-  <p class= "main-visual-text">
+<div class="col-md-10">
+  <div class= "main-visual-text">
   <div>ようこそながのCAKEへ！</div>
   <div>このサイトは、ケーキ販売のECサイトになります。</div>
-  </p>
+  </div>
   <p class="main-visual-name">
   <div>会員ではない方も商品の閲覧はできますが、</div>
   <div>購入には会員登録が必要になります。</div>
   </p>
+  </div>
  </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-2">
-      <!--ジャンル検索-->
-      <%= render 'public/items/genrevar', genres: @genres %>
-    </div>
-   </div>
- </div>
-
-
-
-<!--一覧部分-->
-
-  <tr><h3 style="margin: 20px 0;">新着商品</h3></tr>
-  <div class="container">
-  <div class="row">
-  <tr><% @items.each do |item| %></tr>
+  <div class="col-10">
+   <h3 style="margin: 20px 0;">新着商品</h3>
+    <div class="container">
+    <div class="row">
+      <div class="text-center row">
+    <tr><% @items.each do |item| %></tr>
     <%= link_to item_path(item) do %>
-    <%= image_tag item.image, size:"100x100" %>
+    <%= image_tag item.image, size:"200x200" %>
     <div><%= item.name %></div>
     <% end %>
-    <div>¥<%= item.price.to_s(:delimited) %></div>
+
+    <tr>¥<%= item.price.to_s(:delimited) %></tr>
     <% end %>
     </div>
     </div>
-<%= link_to "全ての商品を見る", items_path %>
+    </div>
+
+
+<div class="col-10">
+<div class="text-center right">
+<%= link_to "全ての商品を見る> ", items_path %>

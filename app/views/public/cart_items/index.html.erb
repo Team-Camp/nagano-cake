@@ -1,11 +1,21 @@
 
 <%= flash[:notice] %>
 <%= flash[:alert] %>
-<h6>ショッピングカート</h6>
+
+
+<div class= "row">
+ <div class= "col-md-10">
+  <tr bgcolor="silver">
+  <h6>ショッピングカート</h6>
+ </div>
+<div class= "col-md-2">
 <%# ショッピングカートの右側の表示機能 %>
 <%= link_to 'カートを空にする', destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+</div>
 
-  <table border="5">
+
+  <div class="row-lg-10">
+  <table border="2">
   <thead>
    <tr>
     <th>商品名</th>
@@ -34,11 +44,16 @@
      <td><%= cart_item.sum_of_price.to_s(:delimited) %></td>
      <td><%= link_to '削除する', "/cart_items/#{cart_item.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
    <% end %>
+
     </tr>
    </tbody>
   </table>
+
+  <div class= "row">
+ <div class= "col-md-10">
 <%# 単価（税込）合計金額の記載 %>
 <h4>合計金額<%= @prices.to_s(:delimited) %>円</h4>
+
 
 <%# ショッピングカート真ん中部分の表示機能 %>
 <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>

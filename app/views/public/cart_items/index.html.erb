@@ -3,62 +3,97 @@
 <%= flash[:alert] %>
 
 
-<div class= "row">
- <div class= "col-md-10">
-  <tr bgcolor="silver">
-  <h6>ショッピングカート</h6>
- </div>
-<div class= "col-md-2">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3">
+     <p style="font-size:20px; text-align:center;">ショッピングカート</p>
+    </div>
+     <div class="col-5"></div>
+      <div class="col-3">
 <%# ショッピングカートの右側の表示機能 %>
-<%= link_to 'カートを空にする', destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-</div>
+     <%= link_to 'カートを空にする', destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+     </div>
+    </div>
+     <table class="table table-bordered my-4">
+      <thead class="table table-secondary">
+       <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
 
+    <tbody>
+    <% @cart_items.each do |cart_item| %>
+     <tr style="font-size: 18px;">
+      <td style="width: 250px; height:80px;">
+       <%= image_tag cart_item.item.image, size:"50x50" %>
+       <%= cart_item.item.name %>
+      </td>
+      <td style="width: 100px;">
+       <div style="margin: 17px 0 0 15px;">
+        <%= cart_item.item.with_tax_price.to_s(:delimited) %>
+       </div>
+      </td>
 
-  <div class="row-lg-10">
-  <table border="2">
-  <thead>
-   <tr>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-   </tr>
-  </thead>
+      <style>
+       select {
+       height: 28px;
+       margin: 0 15px 0 0;
+       }
+      </style>
 
-  <tbody>
-   <% @cart_items.each do |cart_item| %>
-    <tr>
-     <td>
-      <%= image_tag cart_item.item.image, size:"50x50" %>
-      <%= cart_item.item.name %>
+      <td style="width: 80px;">
+       <div style="margin: 17px 0 0 15px;">
+       <%= form_with model:[cart_item], url: cart_item_path(cart_item) do |f| %>
+        <%#= f.select :amount, ['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"}, :required => true %>
+        <%= f.select :amount,(1..20).to_a, {:prompt => "個数選択"}, :required => true %>
+        <%= f.submit "変更", class: "btn btn-success" %>
+       <% end %>
+      </div>
      </td>
 
-     <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-     <%= form_with model:[cart_item], url: cart_item_path(cart_item) do |f| %>
-
-     <td><%#= f.select :amount, ['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"}, :required => true %>
-         <%= f.select :amount,(1..20).to_a, {:prompt => "個数選択"}, :required => true %>
-         <%= f.submit "変更", class: "btn btn-success" %>
+     <td style="width: 100px;">
+      <div style="margin: 17px 0 0 15px;">
+       <%= cart_item.sum_of_price.to_s(:delimited) %>
+      </div>
      </td>
-   <% end %>
-     <td><%= cart_item.sum_of_price.to_s(:delimited) %></td>
-     <td><%= link_to '削除する', "/cart_items/#{cart_item.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
-   <% end %>
-
-    </tr>
+      <td style="width: 100px;">
+       <div style="margin: 17px 10px 0 20px;">
+        <%= link_to '削除する', "/cart_items/#{cart_item.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+       </div>
+      </td>
+     </tr>
+    <% end %>
    </tbody>
   </table>
 
-  <div class= "row">
- <div class= "col-md-10">
 <%# 単価（税込）合計金額の記載 %>
-<h4>合計金額<%= @prices.to_s(:delimited) %>円</h4>
+   <div class="row my-2">
+      <div class="col-1.5"></div>
+      <div class="col-3">
+        <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+      </div>
+      <div class="col-3 offset-5">
+        <table class="table table-bordered">
+          <tbody>
+            <tr style="font-size: 18px">
+              <td style="background-color: #EEEEEE;">合計金額</td>
+              <td>
+                <%= @prices.to_s(:delimited) %>円
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-
-<%# ショッピングカート真ん中部分の表示機能 %>
-<%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
-
-<% if @cart_items.present? %>
-<%= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>
-<% end %>
-
+    <div style="text-align: center; padding: 50px 0 180px 0;">
+     <% if @cart_items.present? %>
+     <%= link_to '情報入力に進む', new_order_path, class: "btn btn-success" %>
+     <% end %>
+    </div>
+</div>

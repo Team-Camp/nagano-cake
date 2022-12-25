@@ -1,8 +1,10 @@
 <header>
   <nav class="navbar navbar-light mb-2" style="background-color:#FFFFCC;">
     <div class="container">
-      <span><%= link_to image_tag("nagano.png"), root_path, data: {"turbolinks" => false} %></span>
-
+      <p class="text-left"><%= link_to root_path, data: {"turbolinks" => false} do %>
+            <%= image_tag 'nagano_cake.png',size: '110x110' %>
+            <% end %>
+      </p>
 
     <!--顧客がサインインした場合-->
     <% if customer_signed_in? %>

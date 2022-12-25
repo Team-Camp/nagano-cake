@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!, except: [:top]
   # email＆パスワード意外のデータを、deviseにて受け取れるようにする記述です
   before_action :configure_permitted_parameters, if: :devise_controller? #devise利用の機能（ユーザ登録、ログイン認証など）が使われる前にconfigure_permitted_parametersメソッドが実行
+  before_action :set_search
   
   def after_sign_out_path_for(resource)
     new_admin_session_path
@@ -11,6 +12,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource) 
     admin_path
   end
+  
+  def set_search
+    @search = Item.ransack(params[:q])
+    @search_items = @search.result
+  end 
   
   protected
 

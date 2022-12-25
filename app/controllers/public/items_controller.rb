@@ -12,6 +12,9 @@ class Public::ItemsController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @items = @genre.items
       # @item = Item.page(params[:page])
+    elsif @search_items
+      @items = @search_items.page(params[:page])
+      @items_count = @search_items.all.count
     end
 
     # 一覧表示する商品の数を数えてます
